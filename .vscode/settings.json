@@ -1,0 +1,60 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "css.customData": [".vscode/tailwind.json"],
+  "eslint.validate": ["javascript", "typescript", "vue"],
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.turbo/*/**": true,
+    "**/.coverage/*/**": true,
+    "**/libs/*/**": true,
+    "**/dist/*/**": true
+  },
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "package.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders"
+  ],
+  "cSpell.words": [
+    "Ansearch",
+    "Autocapture",
+    "frontends",
+    "Iconify",
+    "Langfuse",
+    "neondatabase",
+    "Nuxt",
+    "ofetch",
+    "onedrive",
+    "pageleave",
+    "pinia",
+    "posthog",
+    "rerank",
+    "reranked",
+    "reranker",
+    "reranking",
+    "Retryable",
+    "schemaname",
+    "sonarjs",
+    "tablename",
+    "tabler",
+    "typebox",
+    "unplugin"
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "content.config*, nuxt.config*, .env, .env.template, .dev.vars, wrangler.json, vitest.config.ts, .prettierignore, environment.d.ts, .windsurfrules, postcss.config*, tailwind.config*, env.d.ts, .editorconfig*, .gitattributes*, .gitignore*, .prettierrc*, eslint.config*, LICENSE, .yarn*, tsconfig*, tsup.config*, turbo.json, yarn.lock, drizzle-dev.config*, drizzle.config*, vite.config*"
+  },
+  "files.exclude": {
+    "**/node_modules/": true,
+    "**/.wrangler/": true,
+    ".yarn": true,
+    "**/.nuxt/": true
+  }
+}
