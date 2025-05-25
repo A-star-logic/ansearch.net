@@ -5,3 +5,9 @@
 html {
   font-family: Nunito, sans-serif;
 }
+
+#__nuxt,
+body,
+html {
+  height: 100%;
+}

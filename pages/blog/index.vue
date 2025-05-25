@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const { data: home } = await useAsyncData(() =>
-  queryCollection("content").path("/").first()
-);
+import { useAsyncData, useSeoMeta } from '#app';
+
+const { data: home } = await useAsyncData(() => {
+  return queryCollection('content').path('/').first();
+});
 
 useSeoMeta({
-  title: home.value?.title,
   description: home.value?.description,
+  title: home.value?.title,
 });
 </script>
 

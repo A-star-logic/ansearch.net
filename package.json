@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "ansearch-landing",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,14 +7,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "yarn run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@nuxt/content": "3.5.1",
-    "@nuxt/eslint": "1.4.1",
     "@nuxt/fonts": "0.11.4",
     "@nuxt/icon": "1.13.0",
     "@nuxt/image": "1.10.0",
+    "@nuxtjs/i18n": "9.5.4",
     "nuxt": "^3.17.4",
     "vue": "^3.5.14",
     "vue-router": "^4.5.1"
@@ -22,11 +24,18 @@
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {
     "@ansearch/config": "^0.2.0",
+    "@nuxt/eslint": "^1.4.1",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^4.3.5",
     "license-checker-rseidelsohn": "^4.4.2",
+    "nitro-cloudflare-dev": "^0.2.2",
+    "nitropack": "^2.11.12",
+    "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "tailwindcss": "3.4.17",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.16.1"
   }
 }
