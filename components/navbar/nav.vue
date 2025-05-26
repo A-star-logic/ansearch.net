@@ -1,5 +1,5 @@
 <script setup>
-import { LangSwitcher } from '../lang-switcher';
+import LangSwitcher from '../language-switcher.vue';
 import { UiButton } from '../ui/button';
 import BrandLink from './brand.vue';
 </script>

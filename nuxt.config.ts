@@ -6,8 +6,12 @@ export default defineNuxtConfig({
       strict: true, // remove trailing slashes
     },
   },
+  components: {
+    dirs: [],
+  },
   imports: {
     autoImport: false,
+    scan: false,
   },
   css: ['~/assets/main.css'],
   content: {
@@ -44,12 +48,12 @@ export default defineNuxtConfig({
     locales: [
       {
         code: 'en',
-        name: '🇬🇧 English',
+        name: 'English',
         file: 'en.json',
         language: 'en-GB',
         isCatchallLocale: true,
       },
-      { code: 'fr', name: '🇫🇷 Français', file: 'fr.json', language: 'fr-FR' },
+      { code: 'fr', name: 'Français', file: 'fr.json', language: 'fr-FR' },
     ],
   },
   postcss: {

@@ -45,7 +45,11 @@
       </div>
     </footer>
     <div class="copyright">
-      Copyright © {{ new Date().getFullYear() }} - Ansearch
+      <div>Copyright © {{ new Date().getFullYear() }} - Ansearch</div>
+      <span>
+        Made with <Icon name="heroicons:heart" /> in Edinburgh, Montpellier &
+        Chennai
+      </span>
     </div>
   </div>
 </template>
@@ -144,6 +148,9 @@
   }
 
   .copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @apply text-sm text-stone-300;
   }
 }
