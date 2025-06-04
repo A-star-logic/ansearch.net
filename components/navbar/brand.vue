@@ -1,7 +1,7 @@
 <template>
   <NuxtLink to="/" class="brand">
     <NuxtImg
-      src="/images/logo.webp"
+      src="/images/logo-200x200.webp"
       height="200"
       alt="Logo"
       class="brand-logo"
@@ -10,7 +10,6 @@
       <div class="brand-title-text">Ansearch</div>
       <div class="brand-title-subtext">An<em>[swer &]</em>Search</div>
     </div>
-    <div class="pill">Beta</div>
   </NuxtLink>
 </template>
 
@@ -18,10 +17,11 @@
 .brand {
   display: flex;
   align-items: center;
+  width: max-content;
   @apply gap-2;
 
   .brand-logo {
-    width: 42px;
+    @apply w-6 md:w-10;
   }
 
   .brand-title {
@@ -32,25 +32,19 @@
 
     .brand-title-text {
       font-family: 'Red Hat Display', sans-serif;
-      font-size: 2rem;
-      @apply text-brand-500 font-bold;
+      @apply text-brand-500 font-bold text-lg md:text-3xl;
+      line-height: 1;
     }
 
     .brand-title-subtext {
-      font-size: 0.875rem;
-      @apply text-stone-500;
+      @apply text-stone-500 text-xs md:text-sm;
 
       em {
         font-style: normal;
         font-size: 0.75rem;
-        @apply text-stone-500;
+        @apply text-stone-500 text-[0.625rem] md:text-xs;
       }
     }
-  }
-
-  .pill {
-    border: 1px solid;
-    @apply px-2 py-1 bg-stone-50 text-stone-600 font-semibold rounded-full text-sm border-stone-200;
   }
 }
 </style>

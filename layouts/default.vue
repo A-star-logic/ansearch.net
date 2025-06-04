@@ -5,14 +5,14 @@ import { Navbar } from '../components/navbar';
 
 <template>
   <Navbar />
-  <div class="content">
+  <div class="layout">
     <slot />
   </div>
   <Footer />
 </template>
 
 <style scoped>
-.content {
-  height: 100%;
+.layout {
+  min-height: 100%;
 }
 </style>

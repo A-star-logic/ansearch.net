@@ -1,9 +1,12 @@
-<script setup>
+<script setup lang="ts">
+// eslint-disable-next-line import-x/no-unresolved -- later
 import { useI18n, useSwitchLocalePath } from '#imports';
 import UiButton from './ui/button/ui-button.vue';
 import { UiDropdown } from './ui/dropdown';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- later
 const { locale: currentLocale, locales } = useI18n();
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- later
 const switchLocalePath = useSwitchLocalePath();
 </script>
 
