@@ -58,7 +58,7 @@ const {
   white-space: nowrap;
   font-weight: 500;
   cursor: pointer;
-  @apply rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-950 disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+  @apply rounded-2xl text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-950 disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
 
   &.disabled {
     cursor: not-allowed;
@@ -66,6 +66,7 @@ const {
 
   &.variant-primary {
     border: 1px solid;
+    font-weight: 600;
     @apply bg-brand-500 text-brand-50 shadow border-brand-500;
 
     &:hover {

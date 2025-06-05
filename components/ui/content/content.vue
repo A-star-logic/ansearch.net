@@ -10,6 +10,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @apply container mx-auto gap-10 py-10;
+  @apply container mx-auto gap-16 py-16;
 }
 </style>

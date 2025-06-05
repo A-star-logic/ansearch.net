@@ -1,7 +1,11 @@
+<script setup lang="ts">
+defineProps<{ color?: 'blue' }>();
+</script>
+
 <template>
   <div class="copy">
     <div class="copy-header">
-      <div class="copy-header-caption">
+      <div class="copy-header-caption" :class="`copy-header-caption-${color}`">
         <slot name="header-caption" />
       </div>
       <h2>
@@ -40,6 +44,10 @@
       display: flex;
       align-items: center;
       @apply gap-2 text-brand-500 text-lg;
+    }
+
+    .copy-header-caption-blue {
+      @apply text-cyan-500;
     }
   }
 

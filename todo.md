@@ -5,15 +5,19 @@ Inspo: https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids
 Copy inspo: https://www.askvinny.com/
 And https://stitch.withgoogle.com/
 
+## Inspiration
+
+- For integrations: https://marketplace.stripe.com/, group the integrations by benefits "eg: grow your business instead of CRM"
+- For a feature: https://stripe.com/gb/connect
+
+## TODO
+
 - Keep it simple
-- Product
-- Benefits
 - FAQ
 - Pricing
 - Link tree page "Power up your business"
 - Discount on pricing page
 
-- Hero
 - Posthog
 - <https://nuxt.com/modules/seo-experiments>
 - <https://nuxt.com/modules/seo>
@@ -32,4 +36,3 @@ And https://stitch.withgoogle.com/
 - blog (multi lingual: https://github.com/nuxt/content/blob/main/examples/i18n/app/pages/%5B...slug%5D.vue && https://github.com/nuxt/content/issues/2596#issuecomment-2048025161)
 - blog pre-rendering https://content.nuxt.com/docs/deploy/serverless
 - cookies banner
-- dropdown outside click
