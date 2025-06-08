@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ansearch-landing",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2025-05-25",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public/"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "placement": { "mode": "smart" },
+  "d1_databases": [
+    {
+      "binding": "CMS",
+      "database_name": "ansearch-landing-cms",
+      "database_id": "e901b1be-29c1-4482-9171-f36280bfd39f"
+    }
+  ]
+}

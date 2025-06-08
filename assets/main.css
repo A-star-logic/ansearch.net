@@ -4,4 +4,22 @@
 
 html {
   font-family: Nunito, sans-serif;
+  /* @apply bg-brand-50/40; */
+  @apply bg-brand-50;
+}
+
+#__nuxt,
+body,
+html {
+  height: 100%;
+}
+
+.desktop {
+  display: none;
+  @apply md:flex;
+}
+
+.mobile {
+  display: flex;
+  @apply md:hidden;
 }
