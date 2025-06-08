@@ -68,15 +68,13 @@
 
   .brand-banner-logos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    @apply gap-14 p-6;
+    @apply gap-14 p-6 md:grid-cols-3;
 
     .brand-banner-logo {
-      max-width: 200px;
-      max-height: 40px;
       object-fit: cover;
-      @apply mx-auto;
+      @apply mx-auto md:max-w-52 md:max-h-10;
     }
   }
 }

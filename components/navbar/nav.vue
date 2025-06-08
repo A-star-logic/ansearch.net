@@ -59,7 +59,7 @@ const mobileMenuOpen = ref(false);
   width: 100%;
   position: sticky;
   top: 0;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-right: 1px solid;

@@ -56,6 +56,9 @@ defineProps<{ color?: 'blue' }>();
   }
 
   .copy-footer {
+    display: flex;
+    align-items: center;
+    @apply gap-4;
   }
 }
 </style>

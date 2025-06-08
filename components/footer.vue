@@ -1,6 +1,26 @@
-<script setup></script>
+<script setup>
+import CtaAlt from './cta-alt.vue';
+import Cta from './cta.vue';
+import { Copy } from './ui/copy';
+import { Section } from './ui/section';
+</script>
 
 <template>
+  <Section>
+    <Copy>
+      <template #header-title>
+        <h2>Get knowledge superpowers</h2>
+      </template>
+      <template #content>
+        Ready to start? Get in touch or create your account and get started in
+        minutes.
+      </template>
+      <template #footer>
+        <cta-alt />
+        <cta />
+      </template>
+    </Copy>
+  </Section>
   <div class="invert-rounded">
     <div class="invert-rounded-inner"></div>
   </div>
@@ -55,6 +75,16 @@
 </template>
 
 <style scoped>
+.footer-cta {
+  display: flex;
+  align-items: center;
+  @apply gap-2 bg-white;
+
+  .title {
+    @apply text-stone-800 text-2xl;
+  }
+}
+
 .invert-rounded {
   width: 100%;
   @apply bg-stone-700;

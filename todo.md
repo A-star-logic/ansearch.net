@@ -12,12 +12,6 @@ And https://stitch.withgoogle.com/
 
 ## TODO
 
-- Keep it simple
-- FAQ
-- Pricing
-- Link tree page "Power up your business"
-- Discount on pricing page
-
 - Posthog
 - <https://nuxt.com/modules/seo-experiments>
 - <https://nuxt.com/modules/seo>
@@ -26,10 +20,10 @@ And https://stitch.withgoogle.com/
 - https://i18n.nuxtjs.org/docs/guide/per-component-translations
 - 404 with nice image <https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages#component-9e31dc71bccd709e04de0ed11a1328b0>
 
-## Security
-
-- Add "No vibe coders"
-- Rework the data policy and explanation
+- Hexagons <https://www.geeksforgeeks.org/css/how-to-draw-a-curved-edge-hexagon-using-css/>
+- <https://css-tip.com/hexagon-shape/>
+- <https://www.youtube.com/watch?v=hXNHFBfAk7o>
+- <https://css-shape.com/hexagon/>
 
 ## DO NOT
 

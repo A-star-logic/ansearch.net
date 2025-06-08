@@ -10,7 +10,7 @@ import { Section } from '../components/ui/section';
 
 <template>
   <Hero>
-    <Columns>
+    <Columns rightFirstOnMobile>
       <template #left>
         <Copy>
           <template #header-title>
@@ -120,10 +120,10 @@ import { Section } from '../components/ui/section';
     </Columns>
   </Content>
   <Section>
-    <Columns>
+    <Columns rightFirstOnMobile>
       <template #left>
         <Copy color="blue">
-          <template #header-caption> Our commitment </template>
+          <template #header-caption>Our commitment</template>
           <template #header-title>
             <h2>Maximum Security</h2>
           </template>
@@ -186,11 +186,12 @@ import { Section } from '../components/ui/section';
     </Columns>
   </Section>
   <Content>
+    <h2 class="mobile">FAQ</h2>
     <Columns>
       <template #left>
         <Copy>
           <template #header-title>
-            <h2>FAQ</h2>
+            <h2 class="desktop">FAQ</h2>
           </template>
           <template #content>Can't find you answer here? We can help!</template>
           <template #footer>
@@ -223,37 +224,249 @@ import { Section } from '../components/ui/section';
       </template>
     </Columns>
   </Content>
+  <div class="pricing">
+    <h2>Simple, transparent pricing</h2>
+    <div class="pricing-hint">(Quick it's free while in beta!)</div>
+    <div class="pricing-cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-header-title">Wee pot of honey</div>
+            <div class="card-header-subtitle">For individuals</div>
+          </div>
+          <div class="card-header-price"><span>5€</span>/user/month</div>
+        </div>
+        <div class="card-content">
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+        </div>
+        <a
+          href="https://cal.com/olivia-maraval-cal"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="card-footer"
+        >
+          Book a demo
+        </a>
+      </div>
+      <div class="card card-pro">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-header-title">Bees</div>
+            <div class="card-header-subtitle">For power users and teams</div>
+          </div>
+          <div class="card-header-price"><span>23€</span>/user/month</div>
+        </div>
+        <div class="card-content">
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+        </div>
+        <a
+          href="https://cal.com/olivia-maraval-cal"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="card-footer"
+        >
+          Book a demo
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-header-title">Hive</div>
+            <div class="card-header-subtitle">For enterprise</div>
+          </div>
+          <div class="card-header-price"><span>Talk to us</span></div>
+        </div>
+        <div class="card-content">
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>unlimited usage</div>
+          </div>
+        </div>
+        <a
+          href="https://cal.com/olivia-maraval-cal"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="card-footer"
+        >
+          Book a demo
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .sec-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  @apply gap-8 p-8;
-}
-
-.sec-grid-item {
-  display: flex;
-  align-items: flex-start;
-  @apply gap-2;
-}
-
-.sec-grid-icon {
-  flex-shrink: 0;
-  @apply size-8 text-cyan-500;
-}
-
-.sec-grid-item-body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  h3 {
-    @apply text-lg;
+  @apply gap-8 md:p-8;
+  .sec-grid-item {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    @apply gap-2 lg:flex-nowrap;
   }
 
-  p {
-    @apply text-sm text-stone-500;
+  .sec-grid-icon {
+    flex-shrink: 0;
+    @apply size-8 text-cyan-500;
+  }
+
+  .sec-grid-item-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h3 {
+      @apply text-lg;
+    }
+
+    p {
+      @apply text-sm text-stone-500;
+    }
+  }
+}
+
+h2 {
+  font-weight: 700;
+  @apply text-4xl text-stone-600;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @apply gap-2 bg-stone-50 p-8;
+
+  .pricing-hint {
+    @apply text-stone-500 text-sm;
+  }
+}
+
+.pricing-cards {
+  display: flex;
+  @apply gap-4 py-6;
+
+  .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    border: 2px solid;
+    width: 35ch;
+    @apply bg-white rounded-2xl my-5 p-8 gap-4 border-stone-200 shadow-lg;
+
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @apply gap-6;
+
+      .card-header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .card-header-title {
+          text-wrap: nowrap;
+          font-weight: 700;
+          @apply text-2xl;
+        }
+
+        .card-header-subtitle {
+          @apply text-stone-500 text-base;
+        }
+      }
+
+      .card-header-price {
+        display: flex;
+        align-items: baseline;
+        @apply text-stone-500 text-sm gap-1;
+
+        span {
+          font-weight: 700;
+          @apply text-2xl text-stone-950;
+        }
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      @apply gap-1;
+
+      .card-content-item {
+        display: flex;
+        align-items: center;
+        @apply gap-1 text-lg text-stone-500;
+
+        .pricing-icon {
+          @apply w-5 h-5 text-brand-500;
+        }
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      font-weight: 700;
+      @apply bg-[#ffd78f] text-brand-600 p-4 rounded-2xl;
+    }
+  }
+
+  .card-pro {
+    @apply border-brand-200 my-0 bg-brand-50 p-10;
+
+    .card-footer {
+      @apply bg-brand-500 text-white;
+    }
   }
 }
 </style>

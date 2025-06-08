@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{ leftFirstOnMobile?: true }>();
+defineProps<{ rightFirstOnMobile?: true }>();
 </script>
 
 <template>
-  <div class="columns">
+  <div class="columns" :class="{ 'columns-reverse': rightFirstOnMobile }">
     <div class="column">
       <slot name="left"></slot>
     </div>
@@ -16,17 +16,23 @@ defineProps<{ leftFirstOnMobile?: true }>();
 <style scoped>
 .columns {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column-reverse;
+  align-items: stretch;
   width: 100%;
+  @apply md:flex-row md:[align-items:center];
+}
+
+.columns-reverse {
+  flex-direction: column;
+  @apply md:flex-row;
 }
 
 .column {
-  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 60ch;
+  width: 100%;
 }
 </style>

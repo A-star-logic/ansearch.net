@@ -25,6 +25,8 @@ const isOpen = ref(false);
 
 <style scoped>
 .accordion-item {
+  width: 100%;
+
   &:first-child {
     @apply rounded-t-xl;
 

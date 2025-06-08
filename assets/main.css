@@ -4,7 +4,8 @@
 
 html {
   font-family: Nunito, sans-serif;
-  @apply bg-brand-50/40;
+  /* @apply bg-brand-50/40; */
+  @apply bg-brand-50;
 }
 
 #__nuxt,
