@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import Cta from '../components/cta.vue';
 import { UiAccordion, UiAccordionItem } from '../components/ui/accordion';
-import { UiButton } from '../components/ui/button';
 import { Columns } from '../components/ui/columns';
 import { Content } from '../components/ui/content';
 import { Copy } from '../components/ui/copy';
@@ -14,17 +14,11 @@ import { Section } from '../components/ui/section';
       <template #left>
         <Copy>
           <template #header-title>
-            <h1>Connect all your tools, get answers</h1>
+            <h1>{{ $t('pages.index.title') }}</h1>
           </template>
-          <template #content
-            >Search, ask, create reports and work with all your data in a single
-            place</template
-          >
+          <template #content>{{ $t('pages.index.content') }}</template>
           <template #footer>
-            <UiButton>
-              Book a demo
-              <Icon name="heroicons:arrow-right"
-            /></UiButton>
+            <Cta />
           </template>
         </Copy>
       </template>
@@ -34,27 +28,22 @@ import { Section } from '../components/ui/section';
     </Columns>
   </Hero>
   <Content>
+    <h2>{{ $t('pages.index.features.title') }}</h2>
     <Columns>
       <template #left>
         <Copy>
           <template #header-caption>
-            <Icon name="heroicons:exclamation-triangle" />
-            This is a caption
+            <Icon name="fa6-solid:magnifying-glass" />
+            {{ $t('pages.index.features.search.caption') }}
           </template>
           <template #header-title>
-            <h2>hello</h2>
+            <h2>{{ $t('pages.index.features.search.title') }}</h2>
           </template>
           <template #content>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
-            id inventore cumque nostrum dignissimos optio aliquam similique.
-            Ullam, quaerat, eos fuga magni recusandae reiciendis facilis
-            cupiditate, voluptates odio ab temporibus.
+            {{ $t('pages.index.features.search.content') }}
           </template>
           <template #footer>
-            <UiButton>
-              Book a demo
-              <Icon name="heroicons:arrow-right"
-            /></UiButton>
+            <Cta />
           </template>
         </Copy>
       </template>
@@ -66,23 +55,17 @@ import { Section } from '../components/ui/section';
       <template #left>
         <Copy>
           <template #header-caption>
-            <Icon name="heroicons:exclamation-triangle" />
-            This is a caption
+            <Icon name="streamline:decent-work-and-economic-growth-solid" />
+            {{ $t('pages.index.features.ask.caption') }}
           </template>
           <template #header-title>
-            <h2>hello</h2>
+            <h2>{{ $t('pages.index.features.ask.title') }}</h2>
           </template>
           <template #content>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
-            id inventore cumque nostrum dignissimos optio aliquam similique.
-            Ullam, quaerat, eos fuga magni recusandae reiciendis facilis
-            cupiditate, voluptates odio ab temporibus.
+            {{ $t('pages.index.features.ask.content') }}
           </template>
           <template #footer>
-            <UiButton>
-              Book a demo
-              <Icon name="heroicons:arrow-right"
-            /></UiButton>
+            <Cta />
           </template>
         </Copy>
       </template>
@@ -94,23 +77,17 @@ import { Section } from '../components/ui/section';
       <template #left>
         <Copy>
           <template #header-caption>
-            <Icon name="heroicons:exclamation-triangle" />
-            This is a caption
+            <Icon name="fluent:folder-48-filled" />
+            {{ $t('pages.index.features.onboarding.caption') }}
           </template>
           <template #header-title>
-            <h2>hello</h2>
+            <h2>{{ $t('pages.index.features.onboarding.title') }}</h2>
           </template>
           <template #content>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
-            id inventore cumque nostrum dignissimos optio aliquam similique.
-            Ullam, quaerat, eos fuga magni recusandae reiciendis facilis
-            cupiditate, voluptates odio ab temporibus.
+            {{ $t('pages.index.features.onboarding.content') }}
           </template>
           <template #footer>
-            <UiButton>
-              Book a demo
-              <Icon name="heroicons:arrow-right"
-            /></UiButton>
+            <Cta />
           </template>
         </Copy>
       </template>
@@ -123,18 +100,14 @@ import { Section } from '../components/ui/section';
     <Columns rightFirstOnMobile>
       <template #left>
         <Copy color="blue">
-          <template #header-caption>Our commitment</template>
+          <template #header-caption>{{
+            $t('pages.index.security.caption')
+          }}</template>
           <template #header-title>
-            <h2>Maximum Security</h2>
+            <h2>{{ $t('pages.index.security.title') }}</h2>
           </template>
           <template #content>
-            Your data is important and sensitive. We take it seriously and are
-            taking a proactive approach to data security. We have been certified
-            cyber essentials plus in the UK and are working towards ISO 27001
-            compliance. Self-hosted option are available in the meantime.
-            <br /><br />
-            More importantly, we will NEVER sell your data, or use it to train
-            AI without your consent.
+            {{ $t('pages.index.security.content') }}
           </template>
         </Copy>
       </template>
@@ -143,41 +116,76 @@ import { Section } from '../components/ui/section';
           <div class="sec-grid-item">
             <Icon name="fa6-solid:lock" class="sec-grid-icon" />
             <div class="sec-grid-item-body">
-              <h3>Secure encryption</h3>
+              <h3>
+                {{
+                  $t(
+                    'pages.index.security.security-features.secure-encryption.title',
+                  )
+                }}
+              </h3>
               <p>
-                Your data is encrypted using AES-256 encryption at rest and in
-                transit.
+                {{
+                  $t(
+                    'pages.index.security.security-features.secure-encryption.content',
+                  )
+                }}
               </p>
             </div>
           </div>
           <div class="sec-grid-item">
             <Icon name="solar:user-id-outline" class="sec-grid-icon" />
             <div class="sec-grid-item-body">
-              <h3>Strict permission enforcement</h3>
+              <h3>
+                {{
+                  $t(
+                    'pages.index.security.security-features.strict-permission-enforcement.title',
+                  )
+                }}
+              </h3>
               <p>
-                We are using role-based access control to ensure that only you
-                have access to your data, and no one else.
+                {{
+                  $t(
+                    'pages.index.security.security-features.strict-permission-enforcement.content',
+                  )
+                }}
               </p>
             </div>
           </div>
           <div class="sec-grid-item">
             <Icon name="twemoji:flag-european-union" class="sec-grid-icon" />
             <div class="sec-grid-item-body">
-              <h3>EU data residency</h3>
+              <h3>
+                {{
+                  $t(
+                    'pages.index.security.security-features.eu-data-residency.title',
+                  )
+                }}
+              </h3>
               <p>
-                Your data stays in the EU, and is protected by the General Data
-                Protection Regulation (GDPR).
+                {{
+                  $t(
+                    'pages.index.security.security-features.eu-data-residency.content',
+                  )
+                }}
               </p>
             </div>
           </div>
           <div class="sec-grid-item">
             <Icon name="charm:shield-tick" class="sec-grid-icon" />
             <div class="sec-grid-item-body">
-              <h3>Trusted AI providers</h3>
+              <h3>
+                {{
+                  $t(
+                    'pages.index.security.security-features.trusted-ai-providers.title',
+                  )
+                }}
+              </h3>
               <p>
-                We are using trusted AI providers that are transparent about
-                their practices, and we choose to self-host our AI models
-                whenever possible.
+                {{
+                  $t(
+                    'pages.index.security.security-features.trusted-ai-providers.content',
+                  )
+                }}
               </p>
             </div>
           </div>
@@ -193,31 +201,40 @@ import { Section } from '../components/ui/section';
           <template #header-title>
             <h2 class="desktop">FAQ</h2>
           </template>
-          <template #content>Can't find you answer here? We can help!</template>
+          <template #content>
+            {{ $t('pages.index.faq.description') }}
+          </template>
           <template #footer>
-            <UiButton>
-              Book a demo
-              <Icon name="heroicons:arrow-right"
-            /></UiButton>
+            <Cta />
           </template>
         </Copy>
       </template>
       <template #right>
         <UiAccordion>
           <UiAccordionItem>
-            <template #header>What is Ansearch?</template>
+            <template #header>{{
+              $t('pages.index.faq.items.data-location.question')
+            }}</template>
             <template #content>
-              Ansearch is a search engine for your data. It allows you to
-              search, ask, create reports and work with all your data in a
-              single place.
+              {{ $t('pages.index.faq.items.data-location.answer') }}
             </template>
           </UiAccordionItem>
           <UiAccordionItem>
-            <template #header>What is Ansearch?</template>
+            <template #header>{{
+              $t('pages.index.faq.items.data-training.question')
+            }}</template>
             <template #content>
-              Ansearch is a search engine for your data. It allows you to
-              search, ask, create reports and work with all your data in a
-              single place.
+              {{ $t('pages.index.faq.items.data-training.answer0') }}
+              <br />
+              {{ $t('pages.index.faq.items.data-training.answer1') }}
+            </template>
+          </UiAccordionItem>
+          <UiAccordionItem>
+            <template #header>{{
+              $t('pages.index.faq.items.AI-providers.question')
+            }}</template>
+            <template #content>
+              {{ $t('pages.index.faq.items.AI-providers.answer') }}
             </template>
           </UiAccordionItem>
         </UiAccordion>
@@ -225,29 +242,42 @@ import { Section } from '../components/ui/section';
     </Columns>
   </Content>
   <div class="pricing">
-    <h2>Simple, transparent pricing</h2>
-    <div class="pricing-hint">(Quick it's free while in beta!)</div>
+    <h2>{{ $t('pages.index.pricing.title') }}</h2>
+    <div class="pricing-hint">{{ $t('pages.index.pricing.hint') }}</div>
     <div class="pricing-cards">
       <div class="card">
         <div class="card-header">
           <div class="card-header-top">
-            <div class="card-header-title">Wee pot of honey</div>
-            <div class="card-header-subtitle">For individuals</div>
+            <div class="card-header-title">
+              {{ $t('pages.index.pricing.cards.honey.title') }}
+            </div>
+            <div class="card-header-subtitle">
+              {{ $t('pages.index.pricing.cards.honey.subtitle') }}
+            </div>
           </div>
-          <div class="card-header-price"><span>5€</span>/user/month</div>
+          <div class="card-header-price">
+            <span>{{ $t('pages.index.pricing.cards.honey.price') }}</span>
+            {{ $t('pages.index.pricing.cards.honey.price-detail') }}
+          </div>
         </div>
         <div class="card-content">
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.honey.features.search') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.honey.features.connections') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.honey.features.ask') }}
+            </div>
           </div>
         </div>
         <a
@@ -256,33 +286,52 @@ import { Section } from '../components/ui/section';
           target="_blank"
           class="card-footer"
         >
-          Book a demo
+          {{ $t('general.cta') }}
         </a>
       </div>
       <div class="card card-pro">
         <div class="card-header">
           <div class="card-header-top">
-            <div class="card-header-title">Bees</div>
-            <div class="card-header-subtitle">For power users and teams</div>
+            <div class="card-header-title">
+              {{ $t('pages.index.pricing.cards.bees.title') }}
+            </div>
+            <div class="card-header-subtitle">
+              {{ $t('pages.index.pricing.cards.bees.subtitle') }}
+            </div>
           </div>
-          <div class="card-header-price"><span>23€</span>/user/month</div>
+          <div class="card-header-price">
+            <span>{{ $t('pages.index.pricing.cards.bees.price') }}</span>
+            {{ $t('pages.index.pricing.cards.bees.price-detail') }}
+          </div>
         </div>
         <div class="card-content">
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.bees.features.search') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.bees.features.connections') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>{{ $t('pages.index.pricing.cards.bees.features.ask') }}</div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.bees.features.onboarding') }}
+            </div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>
+              {{ $t('pages.index.pricing.cards.bees.features.agent') }}
+            </div>
           </div>
         </div>
         <a
@@ -291,37 +340,69 @@ import { Section } from '../components/ui/section';
           target="_blank"
           class="card-footer"
         >
-          Book a demo
+          {{ $t('general.cta') }}
         </a>
       </div>
       <div class="card">
         <div class="card-header">
           <div class="card-header-top">
-            <div class="card-header-title">Hive</div>
-            <div class="card-header-subtitle">For enterprise</div>
+            <div class="card-header-title">
+              {{ $t('pages.index.pricing.cards.hive.title') }}
+            </div>
+            <div class="card-header-subtitle">
+              {{ $t('pages.index.pricing.cards.hive.subtitle') }}
+            </div>
           </div>
-          <div class="card-header-price"><span>Talk to us</span></div>
+          <div class="card-header-price">
+            <span>{{ $t('pages.index.pricing.cards.hive.price') }}</span>
+          </div>
         </div>
         <div class="card-content">
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.hive.features.search') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.hive.features.connections') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>{{ $t('pages.index.pricing.cards.hive.features.ask') }}</div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>
+              {{ $t('pages.index.pricing.cards.hive.features.onboarding') }}
+            </div>
           </div>
           <div class="card-content-item">
             <Icon name="heroicons:check" class="pricing-icon" />
-            <div>unlimited usage</div>
+            <div>{{ $t('pages.index.pricing.cards.hive.features.agent') }}</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>
+              {{ $t('pages.index.pricing.cards.hive.features.analytics') }}
+            </div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>{{ $t('pages.index.pricing.cards.hive.features.sso') }}</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>{{ $t('pages.index.pricing.cards.hive.features.iso') }}</div>
+          </div>
+          <div class="card-content-item">
+            <Icon name="heroicons:check" class="pricing-icon" />
+            <div>
+              {{ $t('pages.index.pricing.cards.hive.features.roadmap') }}
+            </div>
           </div>
         </div>
         <a
@@ -330,7 +411,7 @@ import { Section } from '../components/ui/section';
           target="_blank"
           class="card-footer"
         >
-          Book a demo
+          {{ $t('general.cta') }}
         </a>
       </div>
     </div>
@@ -388,6 +469,7 @@ h2 {
 
 .pricing-cards {
   display: flex;
+  flex-wrap: wrap;
   @apply gap-4 py-6;
 
   .card {
@@ -397,8 +479,8 @@ h2 {
     justify-content: space-between;
     align-items: stretch;
     border: 2px solid;
-    width: 35ch;
-    @apply bg-white rounded-2xl my-5 p-8 gap-4 border-stone-200 shadow-lg;
+    width: 100%;
+    @apply bg-white rounded-2xl my-5 p-8 gap-4 border-stone-200 shadow-lg md:w-[35ch];
 
     .card-header {
       display: flex;

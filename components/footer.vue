@@ -9,11 +9,10 @@ import { Section } from './ui/section';
   <Section>
     <Copy>
       <template #header-title>
-        <h2>Get knowledge superpowers</h2>
+        <h2>{{ $t('general.footer.marketing-banner.title') }}</h2>
       </template>
       <template #content>
-        Ready to start? Get in touch or create your account and get started in
-        minutes.
+        {{ $t('general.footer.marketing-banner.content') }}
       </template>
       <template #footer>
         <cta-alt />
@@ -31,44 +30,67 @@ import { Section } from './ui/section';
           <div class="brand-title-text">Ansearch</div>
           <div class="brand-title-subtext">An<em>[swer &]</em>Search</div>
         </div>
-        <div class="brand-ethos">Work smarter, not harder</div>
+        <div class="brand-ethos">{{ $t('general.footer.ethos') }}</div>
       </div>
       <div class="columns">
         <div class="column">
-          <div class="column-title">Product</div>
-          <div class="column-link">Features</div>
-          <div class="column-link">Pricing</div>
-          <div class="column-link">Product 3</div>
+          <div class="column-title">
+            {{ $t('general.footer.columns.product.title') }}
+          </div>
+          <NuxtLink :to="$localePath('index')" class="column-link">
+            {{ $t('general.footer.columns.product.search') }}
+          </NuxtLink>
+          <NuxtLink :to="$localePath('index')" class="column-link">
+            {{ $t('general.footer.columns.product.ask') }}
+          </NuxtLink>
+          <NuxtLink :to="$localePath('index')" class="column-link">
+            {{ $t('general.footer.columns.product.reports') }}
+          </NuxtLink>
+          <NuxtLink :to="$localePath('index')" class="column-link">
+            {{ $t('general.footer.columns.product.onboarding') }}
+          </NuxtLink>
         </div>
+        <!-- <div class="column">
+          <div class="column-title">Solutions</div>
+          <NuxtLink :to="$localePath('index')" class="column-link"
+            >Sales</NuxtLink
+          >
+          <NuxtLink :to="$localePath('index')" class="column-link"
+            >Support</NuxtLink
+          >
+          <NuxtLink :to="$localePath('index')" class="column-link"
+            >HR</NuxtLink
+          >
+          <NuxtLink :to="$localePath('index')" class="column-link"
+            >IT/Tech</NuxtLink
+          >
+        </div> -->
         <div class="column">
-          <div class="column-title">Company</div>
-          <NuxtLink to="/blog" class="column-link">Blog</NuxtLink>
-          <a
-            href="https://linkedin.com/company/ansearch"
-            target="_blank"
-            nofollow
-            rel="noopener noreferrer"
-            class="column-link"
-          >
-            Contact
-          </a>
-          <a
-            href="https://linkedin.com/company/ansearch"
-            target="_blank"
-            nofollow
-            rel="noopener noreferrer"
-            class="social"
-          >
-            <Icon name="bi:linkedin" class="social-icon" />
-          </a>
+          <div class="column-title">
+            {{ $t('general.footer.columns.company.title') }}
+          </div>
+          <NuxtLink :to="$localePath('index')" class="column-link">
+            {{ $t('general.footer.columns.company.security') }}
+          </NuxtLink>
+          <NuxtLink :to="$localePath('support')" class="column-link">
+            {{ $t('general.footer.columns.company.support') }}
+          </NuxtLink>
         </div>
       </div>
     </footer>
+    <a
+      href="https://linkedin.com/company/ansearch"
+      target="_blank"
+      nofollow
+      rel="noopener noreferrer"
+      class="social"
+    >
+      <Icon name="bi:linkedin" class="social-icon" />
+    </a>
     <div class="copyright">
       <div>Copyright © {{ new Date().getFullYear() }} - Ansearch</div>
       <span>
-        Made with <Icon name="heroicons:heart" /> in Edinburgh, Montpellier &
-        Chennai
+        {{ $t('general.footer.made-with') }}
       </span>
     </div>
   </div>

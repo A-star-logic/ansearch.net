@@ -52,6 +52,7 @@ const isOpen = ref(false);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: bold;
     @apply cursor-pointer p-4;
 
     &:hover {

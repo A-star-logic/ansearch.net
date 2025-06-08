@@ -3,5 +3,7 @@ import { UiButton } from './ui/button';
 </script>
 
 <template>
-  <UiButton variant="ghost">Sign in</UiButton>
+  <a href="https://app.ansearch.net/login">
+    <UiButton variant="ghost">Login</UiButton>
+  </a>
 </template>

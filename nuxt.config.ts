@@ -57,6 +57,11 @@ export default defineNuxtConfig({
       },
       { code: 'fr', name: 'Français', file: 'fr.json', language: 'fr-FR' },
     ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // recommended
+    },
   },
   postcss: {
     plugins: {

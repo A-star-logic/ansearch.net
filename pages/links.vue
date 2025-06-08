@@ -14,18 +14,17 @@ setPageLayout('empty');
             <div>An<span>[swer &]</span> Search</div>
           </div>
         </div>
-        <h1>Get knowledge superpowers</h1>
+        <h1>{{ $t('pages.links.title') }}</h1>
       </div>
       <div class="sub-title">
         <p>
-          Connect all your pro apps (GMail, Drive, Hubspot, etc.) to search and
-          ask from a single place.
+          {{ $t('pages.links.subtitle') }}
         </p>
-        <p>A "Google and ChatGPT" just for your business.</p>
+        <p>{{ $t('pages.links.subtitle2') }}</p>
       </div>
       <div class="actions">
-        <NuxtLink to="/">
-          Website
+        <NuxtLink :to="$localePath('index')">
+          {{ $t('pages.links.actions.website') }}
           <Icon name="fa6-solid:arrow-right" />
         </NuxtLink>
         <a
@@ -33,10 +32,10 @@ setPageLayout('empty');
           rel="noopener noreferrer"
           target="_blank"
         >
-          Book a call
+          {{ $t('pages.links.actions.book-a-call') }}
           <Icon name="fa6-solid:arrow-up-right-from-square" />
         </a>
-        <p>From 5€ per month</p>
+        <p>{{ $t('pages.links.actions.from-5-eur-per-month') }}</p>
       </div>
     </div>
   </div>

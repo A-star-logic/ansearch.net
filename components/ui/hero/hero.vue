@@ -7,7 +7,7 @@
   <div class="brand-banner">
     <div class="brand-banner-copy">
       <!-- to delete when we have other partners -->
-      Our experience
+      {{ $t('general.hero.customers') }}
     </div>
     <div class="brand-banner-logos">
       <NuxtImg

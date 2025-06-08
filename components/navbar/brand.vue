@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/" class="brand">
+  <NuxtLink :to="$localePath('index')" class="brand">
     <NuxtImg
       src="/images/logo-200x200.webp"
       height="200"

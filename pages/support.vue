@@ -6,31 +6,36 @@ import { Content } from '../components/ui/content';
   <Content>
     <h1>Support</h1>
     <p>
-      The best way to reach us is at
+      {{ $t('pages.support.subtitle0') }}
       <a href="mailto:contact@ansearch.net" class="mail"
         >contact@ansearch.net</a
       >
-      We are only three people, so bear with us, we'll reply as soon as we can.
+      {{ $t('pages.support.subtitle1') }}
     </p>
-    <p>If you would rather speak to us, you can book a call:</p>
+    <p>{{ $t('pages.support.alternative-option') }}</p>
     <div class="cards">
       <div class="card">
         <NuxtImg src="/images/support/mael.webp" alt="Mael" class="card-img" />
-        <h2>Mael</h2>
-        <h3>CEO / Technical</h3>
+        <h2>{{ $t('pages.support.people.mael.name') }}</h2>
+        <h3>{{ $t('pages.support.people.mael.title') }}</h3>
         <div class="card-content">
-          <span>Can help and answer questions with:</span>
+          <span>{{ $t('pages.support.people.mael.description') }}</span>
           <ul>
-            <li>Onboarding</li>
-            <li>Technical issues</li>
-            <li>AI</li>
-            <li>Security</li>
-            <li>Enterprise deployment</li>
+            <li>
+              {{ $t('pages.support.people.mael.list.0') }}
+            </li>
+            <li>
+              {{ $t('pages.support.people.mael.list.1') }}
+            </li>
+            <li>
+              {{ $t('pages.support.people.mael.list.2') }}
+            </li>
+            <li>
+              {{ $t('pages.support.people.mael.list.3') }}
+            </li>
           </ul>
           <span>
-            I will be more than happy to have a chat, but my time is precious.
-            Book a slot with me only if your question could not be answered by
-            email or by Olivia.
+            {{ $t('pages.support.people.mael.second-description') }}
           </span>
         </div>
         <a
@@ -39,7 +44,7 @@ import { Content } from '../components/ui/content';
           target="_blank"
           rel="noopener noreferrer"
         >
-          Book a call
+          {{ $t('pages.support.people-action') }}
         </a>
       </div>
       <div class="card">
@@ -48,14 +53,15 @@ import { Content } from '../components/ui/content';
           alt="Olivia"
           class="card-img"
         />
-        <h2>Olivia</h2>
-        <h3>CSMO / Not technical</h3>
+        <h2>{{ $t('pages.support.people.olivia.name') }}</h2>
+        <h3>{{ $t('pages.support.people.olivia.title') }}</h3>
         <div class="card-content">
-          <span>Can help and answer questions with:</span>
+          <span>{{ $t('pages.support.people.olivia.description') }}</span>
           <ul>
-            <li>General questions</li>
-            <li>Sales</li>
-            <li>Everything else</li>
+            <li>{{ $t('pages.support.people.olivia.list.0') }}</li>
+            <li>{{ $t('pages.support.people.olivia.list.1') }}</li>
+            <li>{{ $t('pages.support.people.olivia.list.2') }}</li>
+            <li>{{ $t('pages.support.people.olivia.list.3') }}</li>
           </ul>
         </div>
         <a
@@ -64,7 +70,7 @@ import { Content } from '../components/ui/content';
           target="_blank"
           rel="noopener noreferrer"
         >
-          Book a call
+          {{ $t('pages.support.people-action') }}
         </a>
       </div>
       <div class="card">
@@ -73,12 +79,10 @@ import { Content } from '../components/ui/content';
           alt="Rohith"
           class="card-img"
         />
-        <h2>Rohith</h2>
-        <h3>CTO / Technical</h3>
+        <h2>{{ $t('pages.support.people.rohith.name') }}</h2>
+        <h3>{{ $t('pages.support.people.rohith.title') }}</h3>
         <div class="card-content">
-          <span
-            >You cannot book me, but now you know the third co-founder :)</span
-          >
+          <span>{{ $t('pages.support.people.rohith.description') }}</span>
         </div>
       </div>
     </div>
@@ -88,6 +92,9 @@ import { Content } from '../components/ui/content';
 <style scoped>
 .cards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   @apply gap-4;
 }
 
@@ -95,7 +102,7 @@ import { Content } from '../components/ui/content';
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35ch;
+  width: 30ch;
   border: 2px solid;
   @apply gap-4 bg-white p-4 rounded-2xl border-stone-200;
 

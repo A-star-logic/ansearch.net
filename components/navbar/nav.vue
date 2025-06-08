@@ -13,14 +13,26 @@ const mobileMenuOpen = ref(false);
       <BrandLink />
       <div class="desktop menu">
         <div class="nav-links">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">About</a>
-          <a href="#" class="nav-link">Contact</a>
+          <NuxtLink :to="$localePath('index')" class="nav-link">Home</NuxtLink>
+          <NuxtLink :to="$localePath('support')" class="nav-link"
+            >Support/Contact</NuxtLink
+          >
         </div>
         <div class="actions">
           <LangSwitcher />
-          <UiButton variant="ghost">Login</UiButton>
-          <UiButton variant="primary">Book a demo</UiButton>
+          <a href="https://app.ansearch.net/login">
+            <UiButton variant="ghost" size="max">Login</UiButton>
+          </a>
+          <a
+            nofollow
+            href="https://cal.com/olivia-maraval-cal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <UiButton variant="primary" size="max">{{
+              $t('general.cta')
+            }}</UiButton>
+          </a>
         </div>
       </div>
       <div class="mobile mobile-actions">
@@ -35,16 +47,26 @@ const mobileMenuOpen = ref(false);
   </div>
   <div v-if="mobileMenuOpen" class="mobile-menu">
     <div class="mobile-menu-links">
-      <a href="#" class="nav-link">Home</a>
-      <a href="#" class="nav-link">About</a>
-      <a href="#" class="nav-link">Contact</a>
+      <NuxtLink :to="$localePath('index')" class="nav-link">Home</NuxtLink>
+      <NuxtLink :to="$localePath('support')" class="nav-link"
+        >Support/Contact</NuxtLink
+      >
     </div>
     <div class="mobile-menu-actions">
       <div class="desktop">
         <LangSwitcher />
       </div>
-      <UiButton variant="ghost">Login</UiButton>
-      <UiButton variant="primary">Book a demo</UiButton>
+      <a href="https://app.ansearch.net/login">
+        <UiButton variant="ghost" size="max">Login</UiButton>
+      </a>
+      <a
+        nofollow
+        href="https://cal.com/olivia-maraval-cal"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <UiButton size="max">{{ $t('general.cta') }}</UiButton>
+      </a>
     </div>
   </div>
   <div
