@@ -20,7 +20,7 @@ const mobileMenuOpen = ref(false);
         <div class="actions">
           <LangSwitcher />
           <UiButton variant="ghost">Login</UiButton>
-          <UiButton variant="primary">Get Started</UiButton>
+          <UiButton variant="primary">Book a demo</UiButton>
         </div>
       </div>
       <div class="mobile mobile-actions">
@@ -44,7 +44,7 @@ const mobileMenuOpen = ref(false);
         <LangSwitcher />
       </div>
       <UiButton variant="ghost">Login</UiButton>
-      <UiButton variant="primary">Get Started</UiButton>
+      <UiButton variant="primary">Book a demo</UiButton>
     </div>
   </div>
   <div

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { UiAccordion, UiAccordionItem } from '../components/ui/accordion';
 import { UiButton } from '../components/ui/button';
 import { Columns } from '../components/ui/columns';
 import { Content } from '../components/ui/content';
@@ -20,8 +21,9 @@ import { Section } from '../components/ui/section';
             place</template
           >
           <template #footer>
-            <UiButton
-              >Get Started<Icon name="heroicons:arrow-right"
+            <UiButton>
+              Book a demo
+              <Icon name="heroicons:arrow-right"
             /></UiButton>
           </template>
         </Copy>
@@ -49,8 +51,9 @@ import { Section } from '../components/ui/section';
             cupiditate, voluptates odio ab temporibus.
           </template>
           <template #footer>
-            <UiButton
-              >Get Started<Icon name="heroicons:arrow-right"
+            <UiButton>
+              Book a demo
+              <Icon name="heroicons:arrow-right"
             /></UiButton>
           </template>
         </Copy>
@@ -76,8 +79,9 @@ import { Section } from '../components/ui/section';
             cupiditate, voluptates odio ab temporibus.
           </template>
           <template #footer>
-            <UiButton
-              >Get Started<Icon name="heroicons:arrow-right"
+            <UiButton>
+              Book a demo
+              <Icon name="heroicons:arrow-right"
             /></UiButton>
           </template>
         </Copy>
@@ -103,8 +107,9 @@ import { Section } from '../components/ui/section';
             cupiditate, voluptates odio ab temporibus.
           </template>
           <template #footer>
-            <UiButton
-              >Get Started<Icon name="heroicons:arrow-right"
+            <UiButton>
+              Book a demo
+              <Icon name="heroicons:arrow-right"
             /></UiButton>
           </template>
         </Copy>
@@ -180,6 +185,44 @@ import { Section } from '../components/ui/section';
       </template>
     </Columns>
   </Section>
+  <Content>
+    <Columns>
+      <template #left>
+        <Copy>
+          <template #header-title>
+            <h2>FAQ</h2>
+          </template>
+          <template #content>Can't find you answer here? We can help!</template>
+          <template #footer>
+            <UiButton>
+              Book a demo
+              <Icon name="heroicons:arrow-right"
+            /></UiButton>
+          </template>
+        </Copy>
+      </template>
+      <template #right>
+        <UiAccordion>
+          <UiAccordionItem>
+            <template #header>What is Ansearch?</template>
+            <template #content>
+              Ansearch is a search engine for your data. It allows you to
+              search, ask, create reports and work with all your data in a
+              single place.
+            </template>
+          </UiAccordionItem>
+          <UiAccordionItem>
+            <template #header>What is Ansearch?</template>
+            <template #content>
+              Ansearch is a search engine for your data. It allows you to
+              search, ask, create reports and work with all your data in a
+              single place.
+            </template>
+          </UiAccordionItem>
+        </UiAccordion>
+      </template>
+    </Columns>
+  </Content>
 </template>
 
 <style scoped>
