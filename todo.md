@@ -5,14 +5,17 @@ Inspo: https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids
 Copy inspo: https://www.askvinny.com/
 And https://stitch.withgoogle.com/
 
-## Inspiration
-
 - For integrations: https://marketplace.stripe.com/, group the integrations by benefits "eg: grow your business instead of CRM"
 - For a feature: https://stripe.com/gb/connect
 
 ## TODO
 
-- Posthog
+1. Posthog
+2. Replace i18N by micro i18N
+3. 404 pages
+4. Github actions
+5. Cloudflare redirects on language
+
 - <https://nuxt.com/modules/seo-experiments>
 - <https://nuxt.com/modules/seo>
 - <https://nuxt.com/modules/link-checker>

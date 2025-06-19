@@ -17,5 +17,11 @@
       "database_name": "ansearch-landing-cms",
       "database_id": "e901b1be-29c1-4482-9171-f36280bfd39f"
     }
+  ],
+  "routes": [
+    {
+      "pattern": "ansearch.net",
+      "custom_domain": true
+    }
   ]
 }
