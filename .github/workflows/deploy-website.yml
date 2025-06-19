@@ -1,0 +1,42 @@
+run-name: Deploy website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    container: node:20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare
+        uses: ./.github/actions/prepare
+
+      - name: Transpile & deploy
+        run: yarn workspace api deploy --define GITHUB_SHA:"'${{ github.sha }}'"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+
+      - name: Upload source maps to Sentry
+        run: |
+          yarn sentry-cli sourcemaps inject ./dist
+          yarn sentry-cli sourcemaps upload --release=${{ github.sha }} ./services/apps/api/dist
+        env:
+          SENTRY_ORG: ansearch
+          SENTRY_PROJECT: website
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
