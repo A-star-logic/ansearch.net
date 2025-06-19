@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       strict: true, // remove trailing slashes
     },
   },
+  srcDir: './src',
   components: {
     dirs: [],
   },
