@@ -65,7 +65,7 @@
         "onboarding": {
           "title": "Accélérez l'accompagnement de votre équipe, réduisez les questions répétées",
           "caption": "Onboarding",
-          "content": "Accélerez l'accompagnement de nouveaux membres de votre équipe, focalisez vous sur l'expérience et les objectifs de travail plutot que comment trouver contrat_revisé_final_2.docx."
+          "content": "Accélerez l'accompagnement de nouveaux membres de votre équipe, focalisez vous sur l'expérience et les objectifs de travail plutot que comment trouver t_revisé_final_2.docx."
         }
       },
       "security": {
@@ -145,7 +145,7 @@
               "search": "Recherche illimitée",
               "ask": "Interactions avec l'IA illimitées",
               "connections": "Connexions d'applications illimitées",
-              "onboarding": "Onboarding au petit oignon",
+              "onboarding": "Onboarding aux petits oignon",
               "agent": "Workflow multi-agent",
               "analytics": "Rapports d'utilisations & outils d'analyse",
               "sso": "SSO",
