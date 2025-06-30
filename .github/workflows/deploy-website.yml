@@ -3,8 +3,6 @@ run-name: Deploy website
 on:
   push:
     branches: [main]
-    paths:
-      - '**'
 
   # Allow manual trigger
   workflow_dispatch:
@@ -17,6 +15,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    environment: production
     container: node:20
     steps:
       - name: Checkout
