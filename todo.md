@@ -10,11 +10,9 @@ And https://stitch.withgoogle.com/
 
 ## TODO
 
-1. Posthog
-2. Replace i18N by micro i18N
-3. 404 pages
-4. Github actions
-5. Cloudflare redirects on language
+1. Replace i18N by micro i18N / or put the translations in the component
+2. 404 page
+3. Cloudflare redirects on language
 
 - <https://nuxt.com/modules/seo-experiments>
 - <https://nuxt.com/modules/seo>
