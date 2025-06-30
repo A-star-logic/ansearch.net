@@ -9,7 +9,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+      // No `ScriptHost` because Vue 3 dropped support for IE
+    ],
     "allowJs": false,
     "noImplicitAny": true,
 
