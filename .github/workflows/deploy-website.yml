@@ -38,11 +38,11 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         shell: bash
 
-      - name: Upload source maps to Sentry
-        run: |
-          yarn sentry-cli sourcemaps inject ./dist
-          yarn sentry-cli sourcemaps upload --release=${{ github.sha }} ./services/apps/api/dist
-        env:
-          SENTRY_ORG: ansearch
-          SENTRY_PROJECT: website
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      # - name: Upload source maps to Sentry
+      #   run: |
+      #     yarn sentry-cli sourcemaps inject ./dist
+      #     yarn sentry-cli sourcemaps upload --release=${{ github.sha }} ./services/apps/api/dist
+      #   env:
+      #     SENTRY_ORG: ansearch
+      #     SENTRY_PROJECT: website
+      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
