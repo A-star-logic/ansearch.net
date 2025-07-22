@@ -54,7 +54,6 @@
   "files.exclude": {
     "**/node_modules/": true,
     "**/.wrangler/": true,
-    ".yarn": true,
     "**/.nuxt/": true
   }
 }
