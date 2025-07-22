@@ -116,7 +116,7 @@
           "honey": {
             "title": "Petit pot de miel",
             "subtitle": "Pour les invididuels",
-            "price": "5€",
+            "price": "12€",
             "price-detail": "/utilisateur/mois",
             "features": {
               "search": "Recherche illimitée",
@@ -127,7 +127,7 @@
           "bees": {
             "title": "Abeilles",
             "subtitle": "Pour les power users et les équipes",
-            "price": "23€",
+            "price": "25€",
             "price-detail": "/utilisateur/mois",
             "features": {
               "search": "Recherche illimitée",
