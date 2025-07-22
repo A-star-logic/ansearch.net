@@ -118,7 +118,7 @@
           "honey": {
             "title": "Wee pot of honey",
             "subtitle": "For individuals",
-            "price": "5€",
+            "price": "12€",
             "price-detail": "/user/month",
             "features": {
               "search": "Unlimited search",
@@ -129,7 +129,7 @@
           "bees": {
             "title": "Bees",
             "subtitle": "For power users and teams",
-            "price": "23€",
+            "price": "25€",
             "price-detail": "/user/month",
             "features": {
               "search": "Unlimited search",
