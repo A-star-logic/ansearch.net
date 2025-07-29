@@ -13,6 +13,7 @@ And https://stitch.withgoogle.com/
 1. Replace i18N by micro i18N / or put the translations in the component
 2. 404 page
 3. Cloudflare redirects on language
+4. on blog (inspired by astarlogic) the featured blog shoudl ALSO be in the list of blog
 
 - <https://nuxt.com/modules/seo-experiments>
 - <https://nuxt.com/modules/seo>

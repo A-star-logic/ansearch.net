@@ -22,7 +22,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const posthogClient = posthog.init(
     import.meta.dev
       ? 'phc_I57DxGhpqMIJXVzsBoGCwdnKtAcNwVq4e8tFBO7FTed'
-      : 'phc_8X8sNhaIvulZisJBI6cmvPsX9Rvauvp8yDaFURijeK',
+      : 'phc_man9AV7OKJRieGaYBSfKI4TpJD0TYkFwF30A8NO9VtF',
     {
       api_host: 'https://eu.i.posthog.com',
       capture_pageview: false, // we add manual pageview capturing below
