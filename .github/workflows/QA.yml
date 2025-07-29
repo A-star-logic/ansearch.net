@@ -1,0 +1,27 @@
+run-name: QA
+
+on:
+  pull_request:
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    container: node:20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare
+        uses: ./.github/actions/prepare
+
+      - name: Transpile
+        run: yarn build
