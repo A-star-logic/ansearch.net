@@ -117,7 +117,7 @@
         "cards": {
           "honey": {
             "title": "Wee pot of honey",
-            "subtitle": "For individuals",
+            "subtitle": "To get started / For small teams",
             "price": "12€",
             "price-detail": "/user/month",
             "features": {
@@ -128,7 +128,7 @@
           },
           "bees": {
             "title": "Bees",
-            "subtitle": "For power users and teams",
+            "subtitle": "For growing teams and power users",
             "price": "25€",
             "price-detail": "/user/month",
             "features": {
@@ -141,7 +141,7 @@
           },
           "hive": {
             "title": "Hive",
-            "subtitle": "For large teams",
+            "subtitle": "For organizations with strict control requirements",
             "price": "Talk to us",
             "features": {
               "search": "Unlimited search",

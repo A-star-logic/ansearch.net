@@ -115,7 +115,7 @@
         "cards": {
           "honey": {
             "title": "Petit pot de miel",
-            "subtitle": "Pour les invididuels",
+            "subtitle": "Pour débuter / petites équipes",
             "price": "12€",
             "price-detail": "/utilisateur/mois",
             "features": {
@@ -126,7 +126,7 @@
           },
           "bees": {
             "title": "Abeilles",
-            "subtitle": "Pour les power users et les équipes",
+            "subtitle": "Pour les équipes qui grandissent et power users",
             "price": "25€",
             "price-detail": "/utilisateur/mois",
             "features": {
@@ -139,7 +139,7 @@
           },
           "hive": {
             "title": "Ruche",
-            "subtitle": "Pour les entreprises",
+            "subtitle": "Pour les organisations avec des exigences de contrôle strict",
             "price": "Contactez-nous",
             "features": {
               "search": "Recherche illimitée",
