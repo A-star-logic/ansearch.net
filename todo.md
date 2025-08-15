@@ -21,6 +21,7 @@ And https://stitch.withgoogle.com/
 - <https://intlayer.org/en-GB/blog/SEO-and-i18n>
 - https://i18n.nuxtjs.org/docs/guide/per-component-translations
 - 404 with nice image <https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages#component-9e31dc71bccd709e04de0ed11a1328b0>
+- LLm txt <https://nuxt.com/modules/llms>
 
 - Hexagons <https://www.geeksforgeeks.org/css/how-to-draw-a-curved-edge-hexagon-using-css/>
 - <https://css-tip.com/hexagon-shape/>
