@@ -52,7 +52,9 @@ defineProps<{ color?: 'blue' }>();
   }
 
   .copy-content {
-    @apply text-lg;
+    display: flex;
+    flex-direction: column;
+    @apply text-lg gap-2;
   }
 
   .copy-footer {
