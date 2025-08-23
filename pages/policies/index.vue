@@ -7,7 +7,7 @@ import Content from '../../components/ui/content/content.vue';
   <Content>
     <h1>Policies</h1>
     <div class="link-grid">
-      <NuxtLink :to="'policies/privacy'">
+      <NuxtLink :to="'/policies/privacy'">
         <CardClickable icon="iconoir:privacy-policy">
           <h2>Privacy policy</h2>
           <p>How we collect and handle your data.</p>

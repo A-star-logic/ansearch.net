@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Transpile
     runs-on: ubuntu-latest
     environment: production
     container: node:20
