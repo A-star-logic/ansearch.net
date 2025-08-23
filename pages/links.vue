@@ -8,7 +8,7 @@ setPageLayout('empty');
     <div class="content-overlay">
       <div class="brand">
         <div class="brand-logo">
-          <NuxtImg src="/images/logo-100x100.webp" width="30" height="30" />
+          <NuxtImg src="/images/logo.svg" width="30" height="30" />
           <div class="brand-logo-title">
             <h2>Ansearch</h2>
             <div>An<span>[swer &]</span> Search</div>
