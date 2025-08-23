@@ -69,7 +69,7 @@ import { Section } from './ui/section';
           <div class="column-title">
             {{ $t('general.footer.columns.company.title') }}
           </div>
-          <NuxtLink :to="$localePath('support')" class="column-link">
+          <NuxtLink :to="'support'" class="column-link">
             {{ $t('general.footer.columns.company.support') }}
           </NuxtLink>
           <NuxtLink :to="'policies'" class="column-link">Policies</NuxtLink>
