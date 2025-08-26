@@ -17,12 +17,6 @@ export default defineNuxtConfig({
     scan: false,
   },
   css: ['~/assets/main.css'],
-  content: {
-    database: {
-      type: 'd1',
-      bindingName: 'CMS',
-    },
-  },
   image: {
     provider: 'ipx',
   },
