@@ -17,12 +17,10 @@
     "lint:licenses": "yarn license-checker-rseidelsohn --onlyAllow 'MIT; MIT OR X11; BSD; ISC; Apache-2.0; Python-2.0; Unlicense; CC0-1.0; MPL-2.0; BlueOak-1.0.0; CC-BY-3.0; CC-BY-4.0; LGPL-3.0-or-later' --excludePackagesStartingWith '@astarlogic/;eslint-plugin-sonarjs;flatbuffers;posthog-js' --summary --unknown"
   },
   "dependencies": {
-    "@nuxt/content": "3.6.3",
     "@nuxt/fonts": "0.11.4",
     "@nuxt/icon": "2.0.0",
     "@nuxt/image": "1.11.0",
     "@nuxtjs/i18n": "10.0.6",
-    "better-sqlite3": "^12.2.0",
     "nuxt": "^4.0.3",
     "posthog-js": "^1.260.2",
     "vue": "^3.5.19",
