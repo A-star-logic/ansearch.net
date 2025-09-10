@@ -1,11 +1,10 @@
 ---
-import Footer from "@components/single-use/footer.astro";
-import Navbar from "@components/single-use/navbar.astro";
-import PostHog from "@components/single-use/posthog.astro";
-import { defaultLang } from "@i18n/ui";
+import PostHog from '@components/single-use/posthog.astro';
+import { defaultLang } from '@i18n/ui';
+import '../styles/global.css';
 const { url, originPathname } = Astro;
 const locale = Astro.currentLocale;
-import { languages } from "@i18n/ui";
+import { languages } from '@i18n/ui';
 ---
 
 <html lang={locale}>
@@ -15,13 +14,12 @@ import { languages } from "@i18n/ui";
     <title>Ansearch</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" />
-    <link href="/src/styles/global.css" rel="stylesheet" />
     {
       Object.entries(languages).map(([lang, _]) => (
         <link
           rel="alternate"
           hreflang={lang}
-          href={`https://ansearch.net${lang === defaultLang ? originPathname.replace(`/${locale}`, "") : originPathname.replace(`/${locale}`, `/${lang}`)}`}
+          href={`https://ansearch.net${lang === defaultLang ? originPathname.replace(`/${locale}`, '') : originPathname.replace(`/${locale}`, `/${lang}`)}`}
         />
       ))
     }
@@ -29,8 +27,6 @@ import { languages } from "@i18n/ui";
   </head>
   <body>
     <PostHog />
-    <Navbar />
     <slot />
-    <Footer />
   </body>
 </html>

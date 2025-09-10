@@ -1,17 +1,17 @@
 ---
-import BaseLayout from "@layouts/base.astro";
-import Btn from "@components/ui/Btn.astro";
-import ContentVertical from "@components/position/ContentVertical.astro";
-import Card from "@components/ui/Card.astro";
-import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import Btn from '@components/ui/Btn.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+import Card from '@components/ui/Card.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 
-import imageMael from "../../images/team/mael.webp";
-import imageOlivia from "../../images/team/olivia.webp";
-import imageRohith from "../../images/team/rohith.webp";
+import imageMael from '../../images/team/mael.webp';
+import imageOlivia from '../../images/team/olivia.webp';
+import imageRohith from '../../images/team/rohith.webp';
 ---
 
-<BaseLayout>
+<LayoutDefault>
   <ContentVertical>
     <h1>Support / Nous contacter</h1>
     <p>
@@ -107,4 +107,4 @@ import imageRohith from "../../images/team/rohith.webp";
       @apply rounded-full h-24 w-auto;
     }
   </style>
-</BaseLayout>
+</LayoutDefault>
