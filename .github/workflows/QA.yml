@@ -11,7 +11,31 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  Check:
+    name: Check
+    runs-on: ubuntu-latest
+    environment: production
+    container: node:20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare
+        uses: ./.github/actions/prepare
+
+      - name: ESLint
+        run: yarn lint:eslint
+
+      - name: TSC
+        run: yarn lint:tsc
+
+      - name: Prettier
+        run: yarn lint:prettier
+
+      - name: Licenses
+        run: yarn lint:licenses
+
+  transpile:
     name: Transpile
     runs-on: ubuntu-latest
     environment: production

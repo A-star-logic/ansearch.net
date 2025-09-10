@@ -1,0 +1,231 @@
+---
+import BaseLayout from '@layouts/base.astro';
+import Hero from '@components/ui/Hero.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+import Btn from '@components/ui/Btn.astro';
+import ContentHorizontal from '@components/position/ContentHorizontal.astro';
+import CopySection from '@components/ui/CopySection.astro';
+import { Icon } from 'astro-icon/components';
+import Grid3 from '@components/position/Grid3.astro';
+import AccordionDropdown from '@components/ui/AccordionDropdown.astro';
+import Accordion from '@components/ui/Accordion.astro';
+import { Image } from 'astro:assets';
+import { getLangFromUrl, useTranslations } from '@i18n/utilities';
+
+import AskImage from '../images/ask.png';
+import BIImage from '../images/BI.png';
+import createImage from '../images/create.png';
+import HeroImage from '../images/Herocropped.png';
+import TrustImage from '../images/Trust.png';
+import partnerImageBPCE from '../images/partners/bpce.webp';
+import partnerImageMinesPSL from '../images/partners/mines-paris.webp';
+import partnerImagePoshMark from '../images/partners/poshmark.webp';
+import partnerImageZoho from '../images/partners/zoho.webp';
+import partnerImageInnodatatics from '../images/partners/innodatatics.webp';
+import partnerImageCavesNotreDame from '../images/partners/caves-notre-dame.webp';
+
+const lang = getLangFromUrl(Astro.url);
+const translation = useTranslations(lang);
+---
+
+<BaseLayout>
+  <Hero>
+    <ContentVertical>
+      <h1 class="!text-white">
+        Work smarter and stay organised with our AI colleague
+      </h1>
+      <p>
+        Plug our AI to your workplace apps to accelerate your work, automate
+        operations, and improve access to internal knowledge.
+      </p>
+      <em>A "Perplexity" for your workplace (and much more)</em>
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://cal.com/olivia-maraval-cal"
+      >
+        <Btn variant="on-color">
+          {translation.cta}
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </a>
+      <Image src={HeroImage} class="h-auto md:max-w-lg" alt="Hero" />
+    </ContentVertical>
+  </Hero>
+  <ContentVertical whiteBackground>
+    <p class="text-stone-500">Our experience</p>
+    <Grid3>
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImageBPCE}
+        alt="BPCE"
+      />
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImagePoshMark}
+        alt="PoshMark"
+      />
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImageZoho}
+        alt="Zoho"
+      />
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImageMinesPSL}
+        alt="Mines PSL"
+      />
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImageInnodatatics}
+        alt="Innodatatics"
+      />
+      <Image
+        class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+        src={partnerImageCavesNotreDame}
+        alt="Caves Notre Dame"
+      />
+    </Grid3>
+  </ContentVertical>
+
+  <!-- 
+  <ContentVertical>
+    <h2 class="text-3xl font-bold">
+      You spend 19% of your time gathering information and 62% on mundane tasks.
+      <br />
+      <em class="text-amber-600">
+        We help you unlock the true power of AI and automation
+      </em>
+    </h2>
+  </ContentVertical> -->
+
+  <ContentHorizontal>
+    <CopySection>
+      <Fragment slot="header-caption">
+        <Icon name="fa7-solid:magnifying-glass" />
+        Hive knowledge (search & ask)
+      </Fragment>
+      <Fragment slot="header-title">
+        Find information instantly, no matter where it is
+      </Fragment>
+      <Fragment slot="content">
+        Ansearch can find and surface critical information, whether it’s in an
+        online drive, your CRM or buried in a chat. Never worry again about
+        information silos, and onboard new hires in half the time.
+      </Fragment>
+    </CopySection>
+    <Image src={AskImage} class="h-auto md:max-w-lg" alt="Ask" />
+  </ContentHorizontal>
+
+  <ContentHorizontal>
+    <CopySection>
+      <Fragment slot="header-caption">
+        <Icon name="fa7-solid:file-pen" />
+        Bee-ditor
+      </Fragment>
+      <Fragment slot="header-title">
+        Co-create with AI, write better, faster
+      </Fragment>
+      <Fragment slot="content">
+        Ansearch leverages your company knowledge and guidelines to help you
+        create, summarise and personalise proposals, reports, PRDs, emails or
+        any text you need for your job. Our simple text editor also supports
+        markdown to breeze through content creation.
+      </Fragment>
+    </CopySection>
+    <Image src={createImage} class="h-auto md:max-w-lg" alt="Create" />
+  </ContentHorizontal>
+
+  <ContentHorizontal>
+    <CopySection>
+      <Fragment slot="header-caption">
+        <Icon name="streamline:decent-work-and-economic-growth-solid" />
+        Bee-zness intelligence
+      </Fragment>
+      <Fragment slot="header-title">
+        Stay up to date and get a 360 overview of your workplace
+      </Fragment>
+      <Fragment slot="content">
+        Create AI agents reporting on what’s happening in your workplace using
+        just text. Stay up to date with what’s happening with your sales funnel,
+        the progress of your roadmap, your cash and finances, you name it.
+      </Fragment>
+    </CopySection>
+    <Image src={BIImage} class="h-auto md:max-w-lg" alt="BI" />
+  </ContentHorizontal>
+
+  <ContentHorizontal whiteBackground>
+    <CopySection>
+      <Fragment slot="header-caption">
+        <Icon name="streamline:shield-check-solid" />
+        Our commitment
+      </Fragment>
+      <Fragment slot="header-title">
+        Maximum Security
+        <br />
+        ZERO data duplicated
+      </Fragment>
+      <Fragment slot="content">
+        Your data is important and sensitive, that's why we don't duplicate it.
+        Our unique approach make our systems work without saving your data, once
+        our AIs are done, all the information from your apps is discarded.
+        <br /> And of course, we will never sell your data or use it to train AI.
+      </Fragment>
+      <Fragment slot="footer">
+        <Btn variant="link">
+          Learn more about our security
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </Fragment>
+    </CopySection>
+    <Image src={TrustImage} class="h-auto md:max-w-lg" alt="Trust" />
+  </ContentHorizontal>
+
+  <ContentHorizontal>
+    <CopySection>
+      <Fragment slot="header-title"> FAQ </Fragment>
+      <Fragment slot="content">
+        Can't find the answer you're looking for?
+      </Fragment>
+      <Fragment slot="footer">
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://cal.com/olivia-maraval-cal"
+        >
+          <Btn>
+            {translation.cta}
+            <Icon name="fa7-solid:arrow-right" />
+          </Btn>
+        </a>
+      </Fragment>
+    </CopySection>
+    <Accordion>
+      <AccordionDropdown>
+        <Fragment slot="header">Is my data used to train AI?</Fragment>
+        <Fragment slot="content">
+          No, we are not, and will never use your data to train AI.
+        </Fragment>
+      </AccordionDropdown>
+      <AccordionDropdown>
+        <Fragment slot="header">What is your pricing?</Fragment>
+        <Fragment slot="content">
+          We are still experimenting with our pricing. For now, each contract is
+          on a case by case basis.
+        </Fragment>
+      </AccordionDropdown>
+      <AccordionDropdown>
+        <Fragment slot="header">Do you have a free trial?</Fragment>
+        <Fragment slot="content">
+          We offer free trials on a case by case basis, please get in touch.
+        </Fragment>
+      </AccordionDropdown>
+      <AccordionDropdown>
+        <Fragment slot="header">Can I self host your solution?</Fragment>
+        <Fragment slot="content">
+          Yes, we offer a self hosting option on our enterprise plan.
+        </Fragment>
+      </AccordionDropdown>
+    </Accordion>
+  </ContentHorizontal>
+</BaseLayout>

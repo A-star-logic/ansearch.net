@@ -1,4 +1,4 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Allow: /
 
-Sitemap: https://ansearch.net/sitemap.xml
+Sitemap: https://ansearch.net/sitemap-index.xml

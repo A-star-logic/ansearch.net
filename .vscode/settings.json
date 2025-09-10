@@ -3,7 +3,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
   "css.customData": [".vscode/tailwind.json"],
-  "eslint.validate": ["javascript", "typescript", "vue"],
+  "eslint.validate": ["javascript", "typescript", "astro"],
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
@@ -12,6 +12,13 @@
     "**/.coverage/*/**": true,
     "**/libs/*/**": true,
     "**/dist/*/**": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "eslint.config.js, .prettierignore, .prettierrc.js, .editorconfig, .yarnrc.yml, wrangler.jsonc, astro.config.ts, tailwind.config.ts, yarn.lock, .gitignore, tsconfig.json"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "cSpell.ignorePaths": [
     "package-lock.json",
@@ -22,38 +29,5 @@
     ".vscode",
     ".vscode-insiders"
   ],
-  "cSpell.words": [
-    "Ansearch",
-    "Autocapture",
-    "frontends",
-    "Iconify",
-    "Langfuse",
-    "neondatabase",
-    "Nuxt",
-    "ofetch",
-    "onedrive",
-    "pageleave",
-    "pinia",
-    "posthog",
-    "rerank",
-    "reranked",
-    "reranker",
-    "reranking",
-    "Retryable",
-    "schemaname",
-    "sonarjs",
-    "tablename",
-    "tabler",
-    "typebox",
-    "unplugin"
-  ],
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "package.json": "components.json, content.config*, nuxt.config*, .env, .env.template, .dev.vars, wrangler.json, vitest.config.ts, .prettierignore, environment.d.ts, .windsurfrules, postcss.config*, tailwind.config*, env.d.ts, .editorconfig*, .gitattributes*, .gitignore*, .prettierrc*, eslint.config*, LICENSE, .yarn*, tsconfig*, tsup.config*, turbo.json, yarn.lock, drizzle-dev.config*, drizzle.config*, vite.config*"
-  },
-  "files.exclude": {
-    "**/node_modules/": true,
-    "**/.wrangler/": true,
-    "**/.nuxt/": true
-  }
+  "cSpell.words": ["Ansearch"]
 }
