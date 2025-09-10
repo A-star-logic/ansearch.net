@@ -1,0 +1,94 @@
+---
+import Btn from '@components/ui/Btn.astro';
+import { languages, ui } from '@i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '@i18n/utilities';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+---
+
+<div class="lang">
+  <div id="lang-toggle">
+    <Btn variant="ghost">
+      <Icon name={languages[lang].flag} class="rounded" />
+      <Icon name="fa7-solid:chevron-down" />
+    </Btn>
+  </div>
+  <div id="lang-dropdown" class="visually-hidden">
+    {
+      Object.entries(languages).map(([language, languageConfig]) => (
+        <a href={translatePath('/', language as keyof typeof ui)}>
+          <Icon name={languageConfig.flag} class="rounded" />
+          {languageConfig.name}
+        </a>
+      ))
+    }
+  </div>
+</div>
+<div id="backdrop" class="visually-hidden"></div>
+
+<script is:inline lang="ts">
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('lang-toggle');
+    const dropdown = document.getElementById('lang-dropdown');
+    const backdrop = document.getElementById('backdrop');
+    btn?.addEventListener('click', () => {
+      dropdown?.classList.toggle('visually-hidden');
+      backdrop?.classList.toggle('visually-hidden');
+    });
+    backdrop?.addEventListener('click', () => {
+      dropdown?.classList.toggle('visually-hidden');
+      backdrop?.classList.toggle('visually-hidden');
+    });
+  });
+</script>
+
+<style>
+  @reference "tailwindcss";
+
+  .lang {
+    position: relative;
+  }
+
+  #lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    @apply bg-white shadow-lg p-2 rounded;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      @apply gap-2 p-2 rounded;
+
+      &:hover {
+        @apply bg-stone-200;
+      }
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  #backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+  }
+</style>

@@ -1,0 +1,15 @@
+<div class="accordion">
+  <slot />
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  .accordion {
+    width: 100%;
+    flex: 1 1 0;
+    border: 1px solid;
+    max-width: 60ch;
+    @apply bg-white border-stone-200 shadow-lg rounded-xl;
+  }
+</style>

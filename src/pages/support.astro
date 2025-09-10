@@ -1,0 +1,109 @@
+---
+import BaseLayout from "@layouts/base.astro";
+import Btn from "@components/ui/Btn.astro";
+import ContentVertical from "@components/position/ContentVertical.astro";
+import Card from "@components/ui/Card.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import imageMael from "../images/team/mael.webp";
+import imageOlivia from "../images/team/olivia.webp";
+import imageRohith from "../images/team/rohith.webp";
+---
+
+<BaseLayout>
+  <ContentVertical>
+    <h1>Support / Contact us</h1>
+    <p>
+      The best way to reach us is at <a href="mailto:contact@ansearch.net">
+        contact@ansearch.net
+      </a>.
+      <br /> We are only three people, so bear with us, we'll reply as soon as we
+      can.
+      <br />
+      <br />
+      If you would rather speak to us, you can book a call :
+    </p>
+    <div class="cards">
+      <Card>
+        <Image src={imageMael} alt="Mael" />
+        <h2>Mael</h2>
+        <h3>CEO</h3>
+        <em>Can help and answer questions with:</em>
+        <ul>
+          <li>Product</li>
+          <li>Onboarding</li>
+          <li>AI</li>
+          <li>Tech & security</li>
+        </ul>
+        <Btn variant="secondary">
+          Book a call with me
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </Card>
+
+      <Card>
+        <Image src={imageOlivia} alt="Olivia" />
+        <h2>Olivia</h2>
+        <h3>CSMO</h3>
+        <em>Can help and answer questions with:</em>
+        <ul>
+          <li>Onboarding</li>
+          <li>Business & partnership</li>
+          <li>General questions</li>
+          <li>Everything else</li>
+        </ul>
+        <Btn>
+          Book a call with me
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </Card>
+
+      <Card>
+        <Image src={imageRohith} alt="Rohith" />
+        <h2>Rohith</h2>
+        <h3>CTO</h3>
+        <em>You cannot book me, but now you know the third co-founder :)</em>
+      </Card>
+    </div>
+  </ContentVertical>
+
+  <style>
+    @reference "tailwindcss";
+
+    a {
+      @apply text-amber-600;
+      &:hover {
+        @apply text-amber-800;
+      }
+    }
+
+    .cards {
+      display: grid;
+      @apply gap-8 grid-cols-3;
+    }
+
+    em,
+    ul,
+    h2,
+    h3 {
+      max-width: 30ch;
+    }
+
+    em {
+      @apply text-stone-500 text-sm;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      width: 100%;
+      @apply gap-1 p-2 list-disc pl-8;
+    }
+
+    img {
+      @apply rounded-full h-24 w-auto;
+    }
+  </style>
+</BaseLayout>

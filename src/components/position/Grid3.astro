@@ -1,0 +1,12 @@
+<div class="grid">
+  <slot />
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  .grid {
+    display: grid;
+    @apply grid-cols-3 gap-14 p-6;
+  }
+</style>

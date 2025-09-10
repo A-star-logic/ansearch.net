@@ -1,0 +1,110 @@
+---
+import BaseLayout from "@layouts/base.astro";
+import Btn from "@components/ui/Btn.astro";
+import ContentVertical from "@components/position/ContentVertical.astro";
+import Card from "@components/ui/Card.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import imageMael from "../../images/team/mael.webp";
+import imageOlivia from "../../images/team/olivia.webp";
+import imageRohith from "../../images/team/rohith.webp";
+---
+
+<BaseLayout>
+  <ContentVertical>
+    <h1>Support / Nous contacter</h1>
+    <p>
+      La meilleure façon de nous joindre est par email à
+      <a href="mailto:contact@ansearch.net"> contact@ansearch.net </a>.
+      <br /> Nous sommes trois personnes, nous répondrons au plus vite.
+      <br />
+      <br />
+      Si vous préférez nous parler en personne, vous pouvez réserver un appel :
+    </p>
+    <div class="cards">
+      <Card>
+        <Image src={imageMael} alt="Mael" />
+        <h2>Mael</h2>
+        <h3>CEO</h3>
+        <em>Peut vous aider avec :</em>
+        <ul>
+          <li>Le produit</li>
+          <li>Prise en main</li>
+          <li>L'IA</li>
+          <li>La sécurité</li>
+        </ul>
+        <Btn variant="secondary">
+          Réserver un appel
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </Card>
+
+      <Card>
+        <Image src={imageOlivia} alt="Olivia" />
+        <h2>Olivia</h2>
+        <h3>CSMO</h3>
+        <em>Peut vous aider avec :</em>
+        <ul>
+          <li>Prise en main</li>
+          <li>Business & partenariat</li>
+          <li>Questions générales</li>
+          <li>Tout le reste</li>
+        </ul>
+        <Btn>
+          Réserver un appel
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </Card>
+
+      <Card>
+        <Image src={imageRohith} alt="Rohith" />
+        <h2>Rohith</h2>
+        <h3>CTO</h3>
+        <em
+          >Vous ne pouvez pas me joindre, mais maintenant vous savez qui est le
+          troisième co-fondateur :)</em
+        >
+      </Card>
+    </div>
+  </ContentVertical>
+
+  <style>
+    @reference "tailwindcss";
+
+    a {
+      @apply text-amber-600;
+      &:hover {
+        @apply text-amber-800;
+      }
+    }
+
+    .cards {
+      display: grid;
+      @apply gap-8 grid-cols-3;
+    }
+
+    em,
+    ul,
+    h2,
+    h3 {
+      max-width: 30ch;
+    }
+
+    em {
+      @apply text-stone-500 text-sm;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      width: 100%;
+      @apply gap-1 p-2 list-disc pl-8;
+    }
+
+    img {
+      @apply rounded-full h-24 w-auto;
+    }
+  </style>
+</BaseLayout>

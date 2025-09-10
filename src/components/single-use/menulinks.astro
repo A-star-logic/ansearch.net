@@ -1,0 +1,40 @@
+---
+import {
+  useTranslatedPath,
+  getLangFromUrl,
+  useTranslations,
+} from '@i18n/utilities';
+import Btn from '@components/ui/Btn.astro';
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const translation = useTranslations(lang);
+---
+
+<a href={translatePath('/')}>{translation.navbar.home}</a>
+<a href={translatePath('/support')}>{translation.navbar.support}</a>
+<a
+  class="mobile"
+  rel="noopener noreferrer"
+  href="https://app.ansearch.net/login"
+>
+  <Btn variant="secondary" size="max">Login</Btn>
+</a>
+<a
+  class="mobile"
+  rel="noopener noreferrer"
+  target="_blank"
+  href="https://cal.com/olivia-maraval-cal"
+>
+  <Btn size="max">{translation.cta}</Btn>
+</a>
+
+<style>
+  @reference "tailwindcss";
+
+  a {
+    @apply p-2 md:p-4 rounded;
+    &:hover {
+      @apply text-amber-600;
+    }
+  }
+</style>

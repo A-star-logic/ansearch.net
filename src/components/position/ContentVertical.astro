@@ -1,0 +1,24 @@
+---
+interface Props {
+  whiteBackground?: boolean;
+}
+
+const { whiteBackground } = Astro.props;
+---
+
+<div class="flex-vertical" class:list={[whiteBackground ? "bg-white" : ""]}>
+  <slot />
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  .flex-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    @apply gap-4 py-8;
+  }
+</style>

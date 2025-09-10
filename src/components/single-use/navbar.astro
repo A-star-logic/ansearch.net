@@ -1,0 +1,152 @@
+---
+import Brand from '@components/brand.astro';
+import NavLang from './navlang.astro';
+import MenuLinks from './menulinks.astro';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@i18n/utilities';
+import Btn from '@components/ui/Btn.astro';
+const lang = getLangFromUrl(Astro.url);
+const translation = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<nav>
+  <div class="container">
+    <a href={translatePath('/')}>
+      <Brand />
+    </a>
+
+    <div class="desktop">
+      <MenuLinks />
+    </div>
+
+    <div class="nav-group">
+      <NavLang />
+      <a
+        class="desktop"
+        rel="noopener noreferrer"
+        href="https://app.ansearch.net/login"
+      >
+        <Btn variant="ghost">Login</Btn>
+      </a>
+      <a
+        class="desktop"
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://cal.com/olivia-maraval-cal"
+      >
+        <Btn>{translation.cta}</Btn>
+      </a>
+      <div id="menu" class="mobile">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="links" class="visually-hidden">
+    <MenuLinks />
+  </div>
+  <div id="backdrop-menu" class="visually-hidden"></div>
+</nav>
+<div class="padding"></div>
+
+<script is:inline lang="ts">
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.getElementById('menu');
+    const links = document.getElementById('links');
+    const backdrop = document.getElementById('backdrop-menu');
+    menu?.addEventListener('click', () => {
+      console.log('click');
+      links?.classList.toggle('visually-hidden');
+      backdrop?.classList.toggle('visually-hidden');
+    });
+    backdrop?.addEventListener('click', () => {
+      links?.classList.toggle('visually-hidden');
+      backdrop?.classList.toggle('visually-hidden');
+    });
+  });
+</script>
+
+<style>
+  @reference "tailwindcss";
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    @apply border-stone-200 shadow p-2 h-16 rounded-b-2xl bg-white/70;
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  #menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    @apply gap-1 px-2 py-1 border-stone-500 rounded;
+
+    .bar {
+      @apply bg-stone-500 rounded-full h-1 w-6;
+    }
+  }
+
+  .padding {
+    @apply h-16;
+  }
+
+  #backdrop-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    @apply bg-stone-300/50;
+  }
+
+  #links {
+    position: absolute;
+    top: 0.5rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 99%;
+    @apply bg-white shadow-lg p-2 rounded;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

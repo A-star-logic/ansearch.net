@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "moduleResolution": "bundler",
     "strict": true,
@@ -23,8 +24,22 @@
 
     "forceConsistentCasingInFileNames": true,
 
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    // required for astro
+    "strictNullChecks": true,
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@css": ["./src/styles/global.css"],
+      "@i18n/*": ["./src/i18n/*"]
+    }
   },
-  "include": ["**/*.ts", "**/*.vue"],
+  "include": ["**/*.ts", "**/*.vue", "**/*.astro", "astro/types.d.ts"],
   "exclude": ["node_modules/*", "**/dist/*"]
 }

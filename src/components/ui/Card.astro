@@ -1,0 +1,16 @@
+<div class="card">
+  <slot />
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid;
+    @apply bg-white shadow-lg rounded-2xl p-2 border-stone-200;
+  }
+</style>

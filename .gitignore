@@ -1,27 +1,24 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+# build output
+dist/
+# generated types
+.astro/
 
-# Node dependencies
-node_modules
+# dependencies
+node_modules/
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
 
 # Logs
 logs
 *.log
 
 # Misc
-.DS_Store
 .fleet
 .idea
-
-# Local env files
-.env
-.env.*
-!.env.example
 
 # wrangler files
 .wrangler
