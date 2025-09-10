@@ -1,7 +1,7 @@
 ---
 import ContentHorizontal from '@components/position/ContentHorizontal.astro';
 import ContentVertical from '@components/position/ContentVertical.astro';
-import BaseLayout from '@layouts/base.astro';
+import LayoutDefault from '@layouts/LayoutDefault.astro';
 import { useTranslatedPath } from '@i18n/utilities';
 import { getLangFromUrl } from '@i18n/utilities';
 import { Icon } from 'astro-icon/components';
@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<BaseLayout>
+<LayoutDefault>
   <ContentVertical>
     <p>Trust center</p>
     <h1>Trust Ansearch with your data</h1>
@@ -161,7 +161,7 @@ const translatePath = useTranslatedPath(lang);
       </div>
     </ContentHorizontal>
   </ContentVertical>
-</BaseLayout>
+</LayoutDefault>
 
 <style>
   @reference "tailwindcss";

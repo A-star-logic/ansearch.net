@@ -6,50 +6,39 @@ import {
   useTranslations,
 } from '@i18n/utilities';
 import { Icon } from 'astro-icon/components';
-import PostHog from '@components/single-use/posthog.astro';
-const locale = Astro.currentLocale;
+import Base from '@layouts/base.astro';
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<html lang={locale}>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <title>Ansearch</title>
-    <link rel="icon" href="/favicon.svg" />
-    <link href="/src/styles/global.css" rel="stylesheet" />
-  </head>
-  <body>
-    <PostHog />
-    <div class="centered">
-      <div class="overlay">
-        <Brand coloredBackground />
-        <div class="intro">
-          <h1>
-            Travaillez plus efficacement, automatisez et restez organisé avec
-            notre collègue IA
-          </h1>
-          <em>un "Perplexity" pour votre travail (et beaucoup plus)</em>
-        </div>
-        <div class="links">
-          <a href={translatePath('/')}>
-            Notre produit<Icon name="fa7-solid:arrow-right" />
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://cal.com/olivia-maraval-cal"
-          >
-            {translation.cta}
-            <Icon name="fa7-solid:arrow-right" />
-          </a>
-        </div>
+<Base>
+  <div class="centered">
+    <div class="overlay">
+      <Brand coloredBackground />
+      <div class="intro">
+        <h1>
+          Travaillez plus efficacement, automatisez et restez organisé avec
+          notre collègue IA
+        </h1>
+        <em>un "Perplexity" pour votre travail (et beaucoup plus)</em>
+      </div>
+      <div class="links">
+        <a href={translatePath('/')}>
+          Notre produit<Icon name="fa7-solid:arrow-right" />
+        </a>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://cal.com/olivia-maraval-cal"
+        >
+          {translation.cta}
+          <Icon name="fa7-solid:arrow-right" />
+        </a>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</Base>
 
 <style>
   @reference "tailwindcss";

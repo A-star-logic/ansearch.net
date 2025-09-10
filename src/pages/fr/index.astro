@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@layouts/base.astro';
+import LayoutDefault from '@layouts/LayoutDefault.astro';
 import Hero from '@components/ui/Hero.astro';
 import ContentVertical from '@components/position/ContentVertical.astro';
 import Btn from '@components/ui/Btn.astro';
@@ -28,7 +28,7 @@ const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 ---
 
-<BaseLayout>
+<LayoutDefault>
   <Hero>
     <ContentVertical>
       <h1 class="!text-white">
@@ -239,4 +239,4 @@ const translation = useTranslations(lang);
       </AccordionDropdown>
     </Accordion>
   </ContentHorizontal>
-</BaseLayout>
+</LayoutDefault>
