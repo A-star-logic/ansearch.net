@@ -6,7 +6,7 @@ interface Props {
 const { whiteBackground } = Astro.props;
 ---
 
-<div class:list={[whiteBackground ? "bg-white" : ""]}>
+<div class:list={[whiteBackground ? 'bg-white' : '']}>
   <div class="container mx-auto px-1">
     <div class="flex-horizontal">
       <slot />
@@ -23,6 +23,6 @@ const { whiteBackground } = Astro.props;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    @apply gap-4 py-28;
+    @apply gap-6 py-28;
   }
 </style>
