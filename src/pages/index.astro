@@ -10,7 +10,11 @@ import Grid3 from '@components/position/Grid3.astro';
 import AccordionDropdown from '@components/ui/AccordionDropdown.astro';
 import Accordion from '@components/ui/Accordion.astro';
 import { Image } from 'astro:assets';
-import { getLangFromUrl, useTranslations } from '@i18n/utilities';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@i18n/utilities';
 
 import AskImage from '../images/ask.png';
 import BIImage from '../images/BI.png';
@@ -26,6 +30,7 @@ import partnerImageCavesNotreDame from '../images/partners/caves-notre-dame.webp
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <LayoutDefault>
@@ -172,10 +177,12 @@ const translation = useTranslations(lang);
         <br /> And of course, we will never sell your data or use it to train AI.
       </Fragment>
       <Fragment slot="footer">
-        <Btn variant="link">
-          Learn more about our security
-          <Icon name="fa7-solid:arrow-right" />
-        </Btn>
+        <a href={translatePath('/policies/security')}>
+          <Btn variant="link">
+            Learn more about our security
+            <Icon name="fa7-solid:arrow-right" />
+          </Btn>
+        </a>
       </Fragment>
     </CopySection>
     <Image src={TrustImage} class="h-auto md:max-w-lg" alt="Trust" />
