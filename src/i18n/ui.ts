@@ -10,6 +10,7 @@ const en = {
   navbar: {
     home: 'Home',
     support: 'Support/Contact',
+    blog: 'Blog'
   },
 };
 const fr = {
@@ -18,6 +19,7 @@ const fr = {
   navbar: {
     home: 'Accueil',
     support: 'Support/Contact',
+    blog: 'Blog'
   },
 };
 
