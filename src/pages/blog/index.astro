@@ -1,0 +1,46 @@
+---
+import LayoutDefault from "@layouts/LayoutDefault.astro";
+import ContentVertical from "@components/position/ContentVertical.astro";
+import Sidebar from "@components/single-use/blogsidebaren.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const posts: CollectionEntry<'blog'>[] = (await getCollection("blog"))
+  .filter((p: CollectionEntry<'blog'>) => p.slug.startsWith("en/"));
+const categories = [...new Set(posts.flatMap(p => p.data.categories))];
+const tags = [...new Set(posts.flatMap(p => p.data.tags || []))];
+
+const url = new URL(Astro.request.url);
+const activeCategory = url.searchParams.get("category");
+const activeTag = url.searchParams.get("tag");
+
+const filteredPosts = posts.filter(post => {
+  if (activeCategory && post.data.categories.includes(activeCategory)) return false;
+  if (activeTag && !post.data.tags?.includes(activeTag)) return false;
+  return true;
+});
+---
+
+<LayoutDefault>
+  <div class="blog-container">
+    <Sidebar {categories} {tags} />
+    <ContentVertical>
+      <h1>Blog</h1>
+  
+      <h2>Articles archive :</h2>
+      <ul>
+        {filteredPosts.map(post => <li><a href={`/blog/${post.slug}`}>{post.data.title}</a></li>)}
+      </ul>
+    </ContentVertical>
+  </div>
+</LayoutDefault>
+
+<style>
+  .blog-container {
+    display: flex;;
+
+    .flex-vertical {
+      width: 100%;
+    }
+  }
+</style>

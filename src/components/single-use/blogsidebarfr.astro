@@ -1,0 +1,74 @@
+---
+const { categories, tags } = Astro.props;
+
+const currentUrl = new URL(Astro.request.url);
+---
+
+<aside>
+  <div class="filter">
+    <h3>Catégories</h3>
+    <ul>
+      {categories.map((cat: string) => {
+        const url = new URL(currentUrl);
+        url.searchParams.set("category", cat);
+        url.searchParams.delete("tag");
+        return (
+          <li>
+            <a href={url}>{cat}</a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <div class="filter">
+    <h3>Étiquettes</h3>
+    <ul>
+      {tags.map((tag: string) => {
+        const url = new URL(currentUrl);
+        url.searchParams.set("tag", tag);
+        return (
+          <li>
+            <a href={url}>{tag}</a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <p><a href="/blog">Réinitialiser les filtres</a></p>
+</aside>
+
+<style>
+  @reference "tailwindcss";
+
+  aside {
+    @apply bg-white w-[250px] h-full border-r border-gray-200 px-4 py-12;
+  }
+
+  .filter {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      @apply text-lg font-bold mb-2;
+    }
+
+    ul {
+      @apply list-inside ml-4;
+
+      li {
+        @apply mb-1;
+
+        a {
+          @apply text-gray-600 hover:text-amber-600;
+        }
+      }
+    }
+  }
+
+  p {
+    a {
+      @apply text-red-600 hover:underline;
+    }
+  }
+</style>

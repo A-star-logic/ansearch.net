@@ -1,11 +1,13 @@
 ---
-import Footer from '@components/single-use/footer.astro';
-import Navbar from '@components/single-use/navbar.astro';
 import BaseLayout from './base.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+const {frontmatter} = Astro.props;
 ---
 
 <BaseLayout>
-  <Navbar />
-  <slot />
-  <Footer />
+  <ContentVertical>
+    <h1>{frontmatter.title}</h1>
+    <p class="post-meta">By {frontmatter.author} | Category: {frontmatter.categories} | Posted on: {frontmatter['date']}</p>
+    <slot />
+  </ContentVertical>
 </BaseLayout>

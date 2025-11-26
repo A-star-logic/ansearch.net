@@ -1,0 +1,36 @@
+---
+import Layout from '@layouts/LayoutDefault.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+  const paths = posts.map(post => {
+    const parts = post.slug.split('/');
+    const lang = parts.shift();
+    const slug = parts.join('/');
+    return {
+      params: { lang, slug },
+    };
+  });
+
+  return paths;
+}
+
+const posts = await getCollection('blog');
+
+const entry = posts.find(
+  post => post.slug === `${Astro.params.lang}/${Astro.params.slug}`
+);
+
+if (!entry) {
+  throw new Error(`Article introuvable: ${Astro.params.lang}/${Astro.params.slug}`);
+}
+
+const { Content } = await entry.render();
+//const meta = entry.data;
+---
+
+<Layout lang={Astro.params.lang}>
+    <Content />
+</Layout>
