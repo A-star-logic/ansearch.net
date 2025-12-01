@@ -29,5 +29,10 @@
     ".vscode",
     ".vscode-insiders"
   ],
-  "cSpell.words": ["Ansearch"]
+  "cSpell.words": [
+    "Ansearch"
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  }
 }

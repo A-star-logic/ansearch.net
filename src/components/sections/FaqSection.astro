@@ -1,0 +1,46 @@
+---
+import ContentHorizontal from '@components/position/ContentHorizontal.astro';
+import CopySection from '@components/ui/CopySection.astro';
+import Accordion from '@components/ui/Accordion.astro';
+import AccordionDropdown from '@components/ui/AccordionDropdown.astro';
+import Btn from '@components/ui/Btn.astro';
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations } from '@i18n/utilities';
+import { BOOKING_URL } from '../../consts';
+import { faqEn, faqFr } from '../../data/faq';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqData = lang === 'fr' ? faqFr : faqEn;
+---
+
+<ContentHorizontal>
+  <CopySection>
+    <Fragment slot="header-title">{t.sections.faq.title}</Fragment>
+    <Fragment slot="content">{t.sections.faq.subtitle}</Fragment>
+    <Fragment slot="footer">
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href={BOOKING_URL}
+      >
+        <Btn>
+          {t.cta}
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </a>
+    </Fragment>
+  </CopySection>
+  <Accordion>
+    {
+      faqData.map((item) => (
+        <AccordionDropdown>
+          <Fragment slot="header">{item.question}</Fragment>
+          <Fragment slot="content">{item.answer}</Fragment>
+        </AccordionDropdown>
+      ))
+    }
+  </Accordion>
+</ContentHorizontal>
+

@@ -1,0 +1,241 @@
+---
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+
+// Future use - uncomment when page is ready:
+// import Hero from '@components/ui/Hero.astro';
+// import { getLangFromUrl, useTranslatedPath } from '@i18n/utilities';
+// const lang = getLangFromUrl(Astro.url);
+// const translatePath = useTranslatedPath(lang);
+
+// Tools data - stored in src/data/tools.ts for reuse
+// Keeping inline for reference, will import when page is ready
+/* const tools: {
+  [key: string]: {
+    url: string;
+    description: string;
+    tag: string;
+    isPriceListedWithoutTraining: number;
+    isTrainingOnData: number;
+    EUHostingOption: number;
+    hasRetention: number;
+  };
+} = {
+  Ansearch: {
+    url: 'https://ansearch.net',
+    description: 'We made ansearch ;)',
+    tag: 'Chatbot',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 4,
+    hasRetention: 5,
+    EUHostingOption: 5,
+  },
+  'Anthropic API': {
+    url: 'https://www.claude.com/platform/api',
+    description:
+      'The API from Anthropic serve multiple variations of Claude, a general purpose LLM.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 3,
+    hasRetention: 3,
+    EUHostingOption: 3,
+  },
+  'Anthropic Claude': {
+    url: 'https://www.anthropic.com/claude',
+    description: 'Claude chat, a business and developer oriented chatbot',
+    tag: 'Chatbot',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 2,
+    hasRetention: 1,
+    EUHostingOption: 2,
+  },
+  'OpenAI API': {
+    url: 'https://openai.com/api/',
+    description:
+      'The API from OpenAI serve multiple LLMs, including GPT, a general purpose LLM.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 3,
+    hasRetention: 3,
+    EUHostingOption: 2,
+  },
+  'AWS Bedrock': {
+    url: 'https://aws.amazon.com/bedrock/',
+    description: 'AWS Bedrock is a service that can host multiple AI models',
+    tag: 'API',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 4,
+    EUHostingOption: 4,
+    hasRetention: 5,
+  },
+  AssemblyAI: {
+    url: 'https://www.assemblyai.com/',
+    description:
+      'AssemblyAI is a service that can transcribe and transcribe audio and video files.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 0,
+    isTrainingOnData: 2,
+    EUHostingOption: 4,
+    hasRetention: 4,
+  },
+  Deepgram: {
+    url: 'https://www.deepgram.com/',
+    description:
+      'Deepgram is a service that can transcribe and transcribe audio and video files.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 0,
+    isTrainingOnData: 2,
+    EUHostingOption: 4,
+    hasRetention: 4,
+  },
+  Speechmatics: {
+    url: 'https://www.speechmatics.com/',
+    description:
+      'Speechmatics is a service that can transcribe and transcribe audio and video files.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 3,
+    isTrainingOnData: 3,
+    EUHostingOption: 5,
+    hasRetention: 4,
+  },
+  Soniox: {
+    url: 'https://www.soniox.com/',
+    description:
+      'Soniox is a service that can transcribe and transcribe audio and video files.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 4,
+    EUHostingOption: 1,
+    hasRetention: 5,
+  },
+  'Cloudflare AI': {
+    url: 'https://developers.cloudflare.com/workers-ai/',
+    description:
+      'Cloudflare AI is a service that can host multiple Open and closed source models on the edge.',
+    tag: 'API',
+    isPriceListedWithoutTraining: 5,
+    isTrainingOnData: 4,
+    EUHostingOption: 1,
+    hasRetention: 5,
+  },
+}; */
+---
+
+<LayoutDefault>
+  <!-- <Hero>
+    <ContentVertical>
+      <h1 class="!text-white">Can I trust</h1>
+      <p class="max-w-[60ch]">
+        Securing your data is very important. Yet for many AI providers, privacy
+        and security is seen as a premium. So we made a list of AI tools and
+        providers, ranked by their security and privacy practices.
+      </p>
+      <p class="max-w-[60ch]">
+        Want to add a tool / is something missing? <a
+          class="text-indigo-500 underline"
+          href={translatePath('/support')}>Contact us</a
+        > or
+        <a
+          href="https://github.com/A-star-logic/ansearch.net"
+          class="text-indigo-500 underline"
+          target="_blank"
+          rel="noopener noreferrer">submit a PR</a
+        >
+      </p>
+      <p class="max-w-[60ch]">
+        Is your company badly scored? <a
+          href="https://www.youtube.com/shorts/uhiyQeE2JWU"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-indigo-500 underline">We're not here to be mean</a
+        >, but to improve the landscape. Reach out if you want to improve your
+        score or if you think we made a mistake.
+      </p>
+    </ContentVertical>
+  </Hero> -->
+  <ContentVertical>
+    Coming soon...
+    <!-- <h2>Tag</h2>
+    <p>Legend:</p>
+    <ul>
+      <li>
+        Is the price listed without training on your data?
+        <ul>
+          <li>
+            5: The pricing page shows the real price of the product / There is
+            no prices (enterprise products).
+          </li>
+          <li>
+            0: The pricing page does not show the real price, but a pricing
+            where your data is being used for training.
+          </li>
+        </ul>
+        <em>Why? This is basic transparency practices.</em>
+      </li>
+      <li>
+        Training on your data:
+        <ul>
+          <li>1: Train on your data by default, cannot be disabled</li>
+          <li>
+            2: Do train on your data by default (Opt OUT required before use)
+          </li>
+          <li>
+            3: Do not train on your data by default (Opt IN to let the service
+            train on your data)
+          </li>
+          <li>4: Never train on your data</li>
+        </ul>
+        <em>
+          Why? Training on your data is not necessary for the service to work,
+          there are other, ethical, ways to obtain training data than forcing
+          collection of user data.
+        </em>
+      </li>
+      <li>
+        EU hosting capabilities:
+        <ul>
+          <li>5: The service can be hosted in the EU</li>
+          <li>
+            4: The service can be hosted in the EU subject to specific
+            limitations
+          </li>
+          <li>3: An extra cost is required to host the service in the EU</li>
+          <li>
+            2: An enterprise contract is required to host the service in the EU
+          </li>
+          <li>
+            1: The service cannot be hosted in the EU / Does not guarantee data
+            residency
+          </li>
+        </ul>
+        <em>
+          Why? EU has much better data protection laws than other places in the
+          world, plus some businesses are required to host their data in the EU.
+        </em>
+      </li>
+      <li>
+        Retention policy (aside from HIPAA compliance):
+        <ul>
+          <li>5: Zero retention</li>
+          <li>4: Can be automated for immediate deletion</li>
+          <li>3: Automatically deleted after 30 days or less</li>
+          <li>2: Automatically deleted after 90 days or less</li>
+          <li>
+            1: Require manual deletion (cannot be automated) OR Require an
+            additional fee (business) contract
+          </li>
+          <li>
+            0: Require invoking GDPR (or equivalent) for deletion OR Require an
+            enterprise contract
+          </li>
+        </ul>
+        <em>
+          Why? Retention policies are important to ensure data is not kept
+          longer than necessary. For apps, anything above 2 or more is great but
+          not required. But it is very important for app developpers to ensure
+          at minimum 2.
+        </em>
+      </li>
+    </ul> -->
+  </ContentVertical>
+</LayoutDefault>

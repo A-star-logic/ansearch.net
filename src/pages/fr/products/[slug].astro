@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import HeroSection from '@components/sections/HeroSection.astro';
+import PartnersGrid from '@components/sections/PartnersGrid.astro';
+import FeatureSection from '@components/sections/FeatureSection.astro';
+import SecuritySection from '@components/sections/SecuritySection.astro';
+import FaqSection from '@components/sections/FaqSection.astro';
+import { useTranslations } from '@i18n/utilities';
+
+type Product = CollectionEntry<'products'>;
+
+export async function getStaticPaths() {
+  const products = await getCollection(
+    'products',
+    (entry: Product) => entry.data.lang === 'fr',
+  );
+
+  return products.map((product: Product) => ({
+    params: { slug: product.data.pageSlug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const { hero, features } = product.data;
+const t = useTranslations('fr');
+---
+
+<LayoutDefault>
+  <HeroSection
+    title={hero.title}
+    subtitle={hero.subtitle}
+    tagline={hero.tagline}
+    image={hero.image}
+    imageAlt={hero.imageAlt}
+  />
+
+  <PartnersGrid />
+
+  <h2 class="text-center pt-16">{t.sections.howItWorks.title}</h2>
+
+  {
+    features.map((feature: (typeof features)[number]) => (
+      <FeatureSection
+        icon={feature.icon}
+        caption={feature.caption}
+        title={feature.title}
+        image={feature.image}
+        imageAlt={feature.imageAlt}
+      >
+        <Fragment set:html={feature.content} />
+      </FeatureSection>
+    ))
+  }
+
+  <SecuritySection />
+
+  <FaqSection />
+</LayoutDefault>

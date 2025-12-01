@@ -1,0 +1,152 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@i18n/utilities';
+
+type LandingPage = CollectionEntry<'landing-pages'>;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+// Get all landing pages for the current language that have nav metadata
+const allPages = await getCollection(
+  'landing-pages',
+  (entry: LandingPage) => entry.data.lang === lang && entry.data.nav !== undefined
+);
+
+// Sort by order
+const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
+  const orderA = a.data.nav?.order ?? 999;
+  const orderB = b.data.nav?.order ?? 999;
+  return orderA - orderB;
+});
+---
+
+<div class="solutions-dropdown">
+  <button class="dropdown-trigger" id="solutions-trigger">
+    {t.navbar.solutions}
+    <Icon name="fa7-solid:chevron-down" class="chevron" />
+  </button>
+  <div class="dropdown-menu" id="solutions-menu">
+    {
+      solutions.map((page: LandingPage) => (
+        <a href={translatePath(`/for/${page.data.pageSlug}`)} class="dropdown-item">
+          {page.data.nav?.icon && (
+            <Icon name={page.data.nav.icon} class="item-icon" />
+          )}
+          <span>{page.data.nav?.title}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initDropdown() {
+    const trigger = document.getElementById('solutions-trigger');
+    const menu = document.getElementById('solutions-menu');
+    
+    if (!trigger || !menu) return;
+
+    // Toggle dropdown on click
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.classList.contains('open');
+      
+      if (isOpen) {
+        menu.classList.remove('open');
+        trigger.classList.remove('open');
+      } else {
+        menu.classList.add('open');
+        trigger.classList.add('open');
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!trigger.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+        menu.classList.remove('open');
+        trigger.classList.remove('open');
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        menu.classList.remove('open');
+        trigger.classList.remove('open');
+      }
+    });
+  }
+
+  // Run on initial load
+  initDropdown();
+
+  // Re-run on Astro page transitions (View Transitions API)
+  document.addEventListener('astro:page-load', initDropdown);
+</script>
+
+<style>
+  @reference "tailwindcss";
+
+  .solutions-dropdown {
+    position: relative;
+  }
+
+  .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    @apply p-2 md:p-4 rounded;
+
+    &:hover {
+      @apply text-amber-600;
+    }
+
+    .chevron {
+      transition: transform 0.2s ease;
+      @apply text-xs;
+    }
+
+    &.open .chevron {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    @apply bg-white shadow-lg rounded-lg border border-stone-200 py-2 mt-1;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    @apply px-4 py-2 text-stone-700 hover:bg-stone-100 hover:text-amber-600;
+
+    .item-icon {
+      @apply text-amber-600;
+    }
+  }
+</style>
+

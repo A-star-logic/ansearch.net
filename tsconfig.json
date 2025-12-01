@@ -33,7 +33,9 @@
         "name": "@astrojs/ts-plugin"
       }
     ],
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@css": ["./src/styles/global.css"],

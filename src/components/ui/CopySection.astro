@@ -1,6 +1,17 @@
+---
+interface Props {
+  color?: string | undefined;
+}
+---
+
 <div class="copy">
   <div class="copy-header">
-    <div class="copy-header-caption" :class="`copy-header-caption-${color}`">
+    <div
+      class:list={[
+        'copy-header-caption',
+        `${Astro.props.color ? Astro.props.color : 'text-indigo-500'}`,
+      ]}
+    >
       <slot name="header-caption" />
     </div>
     <h2>
@@ -17,6 +28,7 @@
 
 <style>
   @reference "tailwindcss";
+
   .copy {
     display: flex;
     flex-direction: column;
@@ -39,11 +51,7 @@
       .copy-header-caption {
         display: flex;
         align-items: center;
-        @apply gap-2 text-amber-600 text-lg;
-      }
-
-      .copy-header-caption-blue {
-        @apply text-cyan-500;
+        @apply gap-2 text-lg;
       }
     }
 

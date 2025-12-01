@@ -8,8 +8,10 @@ import {
   useTranslations,
 } from '@i18n/utilities';
 import Btn from '@components/ui/Btn.astro';
+import { BOOKING_URL, LOGIN_URL } from '../../consts';
+
 const lang = getLangFromUrl(Astro.url);
-const translation = useTranslations(lang);
+const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
@@ -28,17 +30,17 @@ const translatePath = useTranslatedPath(lang);
       <a
         class="desktop"
         rel="noopener noreferrer"
-        href="https://app.ansearch.net/login"
+        href={LOGIN_URL}
       >
-        <Btn variant="ghost">Login</Btn>
+        <Btn variant="ghost">{t.navbar.login}</Btn>
       </a>
       <a
         class="desktop"
         rel="noopener noreferrer"
         target="_blank"
-        href="https://cal.com/olivia-maraval-cal"
+        href={BOOKING_URL}
       >
-        <Btn>{translation.cta}</Btn>
+        <Btn>{t.cta}</Btn>
       </a>
       <div id="menu" class="mobile">
         <div class="bar"></div>
