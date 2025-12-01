@@ -1,14 +1,15 @@
 ---
 interface Props {
   whiteBackground?: boolean;
+  reverse?: boolean;
 }
 
-const { whiteBackground } = Astro.props;
+const { whiteBackground, reverse } = Astro.props;
 ---
 
 <div class:list={[whiteBackground ? 'bg-white' : '']}>
   <div class="container mx-auto px-1">
-    <div class="flex-horizontal">
+    <div class:list={['flex-horizontal', reverse && 'reverse']}>
       <slot />
     </div>
   </div>
@@ -24,5 +25,9 @@ const { whiteBackground } = Astro.props;
     align-items: center;
     justify-content: space-around;
     @apply gap-6 py-28;
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
   }
 </style>

@@ -1,0 +1,153 @@
+---
+/**
+ * Full-page profile selector for the homepage
+ * Users must choose their profile to proceed to the relevant landing page
+ */
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@i18n/utilities';
+import { Icon } from 'astro-icon/components';
+
+// TODO: Uncomment when images are available
+// import scienceBee from '../../images/landing/science_bee.webp';
+// import productBee from '../../images/landing/product_bee.webp';
+// import executiveBee from '../../images/landing/executive_bee.webp';
+// import otherBee from '../../images/landing/other_bee.webp';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const profiles = [
+  {
+    id: 'product-manager',
+    title: t.profileSelector.productManager,
+    path: '/for/product-managers',
+    icon: 'fa7-regular:lightbulb',
+  },
+  {
+    id: 'researcher',
+    title: t.profileSelector.researcher,
+    path: '/for/researchers',
+    icon: 'fa7-solid:flask',
+  },
+  {
+    id: 'executive',
+    title: t.profileSelector.executive,
+    path: '/for/executives',
+    icon: 'fa7-solid:user-tie',
+  },
+  {
+    id: 'other',
+    title: t.profileSelector.other,
+    path: '/for/other',
+    icon: 'fa7-solid:users',
+  },
+];
+---
+
+<main class="selector-page">
+  <div class="content">
+    <h1 class="title">{t.profileSelector.title}</h1>
+
+    <div class="profiles">
+      {
+        profiles.map((profile) => (
+          <a href={translatePath(profile.path)} class="profile-card">
+            <div class="profile-icon">
+              <Icon name={profile.icon} />
+            </div>
+            <span class="profile-title">{profile.title}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</main>
+
+<style>
+  @reference "tailwindcss";
+
+  .selector-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);
+    @apply p-4;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .title {
+    @apply text-4xl md:text-5xl font-bold text-center;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .profiles {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+
+    /* Mobile: 2x2 grid */
+    grid-template-columns: repeat(2, 1fr);
+
+    /* Desktop: 4 columns */
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    @apply text-white;
+
+    &:hover {
+      background: rgba(251, 191, 36, 0.15);
+      border-color: rgba(251, 191, 36, 0.5);
+      transform: translateY(-4px);
+
+      .profile-icon {
+        @apply text-amber-400;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    @apply text-5xl md:text-6xl text-amber-500;
+  }
+
+  .profile-title {
+    @apply text-base md:text-lg font-medium text-center;
+  }
+</style>

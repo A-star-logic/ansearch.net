@@ -1,0 +1,93 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+
+type Policy = CollectionEntry<'policies'>;
+
+export async function getStaticPaths() {
+  const policies = await getCollection('policies');
+
+  return policies.map((policy: Policy) => ({
+    params: { slug: policy.slug },
+    props: { policy },
+  }));
+}
+
+interface Props {
+  policy: Policy;
+}
+
+const { policy } = Astro.props;
+const { Content } = await policy.render();
+---
+
+<LayoutDefault>
+  <ContentVertical>
+    <article class="policy-content">
+      <Content />
+    </article>
+  </ContentVertical>
+</LayoutDefault>
+
+<style>
+  @reference "tailwindcss";
+
+  .policy-content {
+    max-width: 80ch;
+    text-align: start;
+    @apply text-stone-700;
+  }
+
+  .policy-content :global(h1) {
+    @apply text-3xl font-bold mb-4 text-stone-800;
+  }
+
+  .policy-content :global(h2) {
+    @apply text-2xl font-semibold mt-8 mb-4 text-stone-800;
+  }
+
+  .policy-content :global(h3) {
+    @apply text-xl font-semibold mt-6 mb-3 text-stone-800;
+  }
+
+  .policy-content :global(p) {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .policy-content :global(ul),
+  .policy-content :global(ol) {
+    @apply mb-4 pl-6 list-disc;
+  }
+
+  .policy-content :global(ol) {
+    @apply list-decimal;
+  }
+
+  .policy-content :global(li) {
+    @apply mb-2;
+  }
+
+  .policy-content :global(a) {
+    @apply text-amber-600 hover:text-amber-800 underline;
+  }
+
+  .policy-content :global(strong) {
+    @apply font-semibold text-stone-800;
+  }
+
+  .policy-content :global(table) {
+    @apply w-full border-collapse mb-6;
+  }
+
+  .policy-content :global(th),
+  .policy-content :global(td) {
+    @apply border border-stone-300 px-4 py-2 text-left;
+  }
+
+  .policy-content :global(th) {
+    @apply bg-stone-100 font-semibold;
+  }
+</style>
+

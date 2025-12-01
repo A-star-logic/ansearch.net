@@ -1,4 +1,6 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import CopySection from '@components/ui/CopySection.astro';
 import Btn from '@components/ui/Btn.astro';
 import {
@@ -8,9 +10,37 @@ import {
 } from '@i18n/utilities';
 import Brand from '@components/brand.astro';
 import { Icon } from 'astro-icon/components';
+import { BOOKING_URL, LINKEDIN_URL } from '../../consts';
+
+type LandingPage = CollectionEntry<'landing-pages'>;
+// type Product = CollectionEntry<'products'>;
+
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-const translation = useTranslations(lang);
+const t = useTranslations(lang);
+
+// Get solutions for footer
+const allPages = await getCollection(
+  'landing-pages',
+  (entry: LandingPage) =>
+    entry.data.lang === lang && entry.data.nav !== undefined,
+);
+const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
+  const orderA = a.data.nav?.order ?? 999;
+  const orderB = b.data.nav?.order ?? 999;
+  return orderA - orderB;
+});
+
+// Get products for footer
+// const allProducts = await getCollection(
+//   'products',
+//   (entry: Product) => entry.data.lang === lang,
+// );
+// const products = allProducts.sort((a: Product, b: Product) => {
+//   const orderA = a.data.nav?.order ?? 999;
+//   const orderB = b.data.nav?.order ?? 999;
+//   return orderA - orderB;
+// });
 ---
 
 <footer>
@@ -18,16 +48,12 @@ const translation = useTranslations(lang);
     <div class="container mx-auto">
       <CopySection>
         <Fragment slot="header-title">
-          Ready to unlock the power of AI and automation?
+          {t.footer.banner}
         </Fragment>
         <Fragment slot="footer">
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://cal.com/olivia-maraval-cal"
-          >
+          <a rel="noopener noreferrer" target="_blank" href={BOOKING_URL}>
             <Btn>
-              {translation.cta}
+              {t.cta}
               <Icon name="fa7-solid:arrow-right" />
             </Btn>
           </a>
@@ -42,35 +68,65 @@ const translation = useTranslations(lang);
     </div>
     <div class="rows">
       <ul>
-        <li class="row-title">Company</li>
-        <li><a href={translatePath('/')}>Product</a></li>
-        <li><a href={translatePath('/support')}>Contact/Support</a></li>
+        <li class="row-title">{t.footer.company}</li>
+        <li><a href={translatePath('/')}>{t.footer.product}</a></li>
+        <li><a href={translatePath('/support')}>{t.footer.contact}</a></li>
+      </ul>
+      <!-- <ul>
+        <li class="row-title">{t.footer.products}</li>
+        {
+          products.map((product: Product) => (
+            <li>
+              <a href={translatePath(`/products/${product.data.pageSlug}`)}>
+                {product.data.nav?.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul> -->
+      <ul>
+        <li class="row-title">{t.footer.solutions}</li>
+        {
+          solutions.map((page: LandingPage) => (
+            <li>
+              <a href={translatePath(`/for/${page.data.pageSlug}`)}>
+                {page.data.nav?.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
       <ul>
-        <li class="row-title">Policies</li>
-        <li><a href={translatePath('/policies/terms')}>Terms</a></li>
-        <li><a href={translatePath('/policies/security')}>Security</a></li>
-        <li><a href={translatePath('/policies/privacy')}>Privacy</a></li>
+        <li class="row-title">{t.footer.policies}</li>
+        <li><a href={translatePath('/policies/terms')}>{t.footer.terms}</a></li>
         <li>
-          <a href={translatePath('/policies/subprocessors')}>Sub-processors</a>
+          <a href={translatePath('/policies/security')}>{t.footer.security}</a>
+        </li>
+        <li>
+          <a href={translatePath('/policies/privacy')}>{t.footer.privacy}</a>
+        </li>
+        <li>
+          <a href={translatePath('/policies/subprocessors')}
+            >{t.footer.subprocessors}</a
+          >
         </li>
       </ul>
       <ul>
-        <li class="row-title">Social</li>
+        <li class="row-title">{t.footer.social}</li>
         <li>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://linkedin.com/company/ansearch"
-          >
-            Linkedin
+          <a rel="noopener noreferrer" target="_blank" href={LINKEDIN_URL}>
+            LinkedIn
           </a>
         </li>
       </ul>
+      <ul>
+        <li class="row-title">{t.footer.tools}</li>
+        <li><a href="/tools/canitrust">Can I trust</a></li>
+      </ul>
     </div>
     <div class="copyright">
-      <p>&copy; {new Date().getFullYear()} Ansearch. All rights reserved.</p>
-      <p>Made with ❤️ in Edinburgh, Montpellier & Chennai</p>
+      <p>&copy; {new Date().getFullYear()} Ansearch. {t.footer.copyright}</p>
+      <p>{t.footer.madeWith}</p>
     </div>
   </div>
 </footer>

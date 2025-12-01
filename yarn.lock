@@ -980,6 +980,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/fa7-regular@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@iconify-json/fa7-regular@npm:1.2.2"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/17368fbd9f61a1c657ba4eadb5ed3fa0461f05eb6c90dff4445cb608794f1c1a5ce3d7426253f24985974eaff3f8855608f6bf07cb467e9e126d91b952d2743d
+  languageName: node
+  linkType: hard
+
 "@iconify-json/fa7-solid@npm:^1.2.2":
   version: 1.2.2
   resolution: "@iconify-json/fa7-solid@npm:1.2.2"
@@ -1722,6 +1731,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-compose-refs@npm:1.1.2":
+  version: 1.1.2
+  resolution: "@radix-ui/react-compose-refs@npm:1.1.2"
+  peerDependencies:
+    "@types/react": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/d36a9c589eb75d634b9b139c80f916aadaf8a68a7c1c4b8c6c6b88755af1a92f2e343457042089f04cc3f23073619d08bb65419ced1402e9d4e299576d970771
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-slot@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@radix-ui/react-slot@npm:1.2.4"
+  dependencies:
+    "@radix-ui/react-compose-refs": "npm:1.1.2"
+  peerDependencies:
+    "@types/react": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/8b719bb934f1ae5ac0e37214783085c17c2f1080217caf514c1c6cc3d9ca56c7e19d25470b26da79aa6e605ab36589edaade149b76f5fc0666f1063e2fc0a0dc
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.2.0":
   version: 5.3.0
   resolution: "@rollup/pluginutils@npm:5.3.0"
@@ -2258,6 +2295,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react@npm:^19":
+  version: 19.2.7
+  resolution: "@types/react@npm:19.2.7"
+  dependencies:
+    csstype: "npm:^3.2.2"
+  checksum: 10c0/a7b75f1f9fcb34badd6f84098be5e35a0aeca614bc91f93d2698664c0b2ba5ad128422bd470ada598238cebe4f9e604a752aead7dc6f5a92261d0c7f9b27cfd1
+  languageName: node
+  linkType: hard
+
 "@types/sax@npm:^1.2.1":
   version: 1.2.7
   resolution: "@types/sax@npm:1.2.7"
@@ -2759,6 +2805,7 @@ __metadata:
     "@astrojs/rss": "npm:^4.0.12"
     "@astrojs/sitemap": "npm:^3.6.0"
     "@astrojs/ts-plugin": "npm:^1.10.4"
+    "@iconify-json/fa7-regular": "npm:^1.2.2"
     "@iconify-json/fa7-solid": "npm:^1.2.2"
     "@iconify-json/flagpack": "npm:^1.2.6"
     "@iconify-json/lucide": "npm:^1.2.68"
@@ -2766,16 +2813,24 @@ __metadata:
     "@iconify-json/streamline-flex": "npm:^1.2.3"
     "@iconify-json/streamline-plump": "npm:^1.2.0"
     "@iconify-json/twemoji": "npm:^1.2.4"
+    "@radix-ui/react-slot": "npm:^1.2.4"
     "@tailwindcss/vite": "npm:^4.1.14"
+    "@types/react": "npm:^19"
     astro: "npm:^5.14.1"
     astro-icon: "npm:^1.1.5"
+    class-variance-authority: "npm:^0.7.1"
+    clsx: "npm:^2.1.1"
     eslint: "npm:^9.37.0"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-import-resolver-typescript: "npm:^4.4.4"
     license-checker-rseidelsohn: "npm:^4.4.2"
+    lucide-react: "npm:^0.555.0"
     prettier: "npm:^3.6.2"
+    react: "npm:^19.2.0"
     sharp: "npm:^0.34.4"
+    tailwind-merge: "npm:^3.4.0"
     tailwindcss: "npm:^4.1.14"
+    tw-animate-css: "npm:^1.4.0"
     typescript: "npm:^5.9.3"
     wrangler: "npm:^4.42.0"
   languageName: unknown
@@ -3317,6 +3372,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-variance-authority@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "class-variance-authority@npm:0.7.1"
+  dependencies:
+    clsx: "npm:^2.1.1"
+  checksum: 10c0/0f438cea22131808b99272de0fa933c2532d5659773bfec0c583de7b3f038378996d3350683426b8e9c74a6286699382106d71fbec52f0dd5fbb191792cccb5b
+  languageName: node
+  linkType: hard
+
 "clean-regexp@npm:^1.0.0":
   version: 1.0.0
   resolution: "clean-regexp@npm:1.0.0"
@@ -3585,6 +3649,13 @@ __metadata:
   dependencies:
     css-tree: "npm:~2.2.0"
   checksum: 10c0/ab4beb1e97dd7e207c10e9925405b45f15a6cd1b4880a8686ad573aa6d476aed28b4121a666cffd26c37a26179f7b54741f7c257543003bfb244d06a62ad569b
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
   languageName: node
   linkType: hard
 
@@ -5949,6 +6020,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.555.0":
+  version: 0.555.0
+  resolution: "lucide-react@npm:0.555.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/18f0870307fe2a37cf62473de88845a78107295de1efcf599a8662be3af4239c0b661a57f8e29815e424773e4aad04d199ad4d94d7ae977b7ce7a61be7f64e04
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:^0.30.18, magic-string@npm:^0.30.19":
   version: 0.30.19
   resolution: "magic-string@npm:0.30.19"
@@ -7596,6 +7676,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react@npm:^19.2.0":
+  version: 19.2.0
+  resolution: "react@npm:19.2.0"
+  checksum: 10c0/1b6d64eacb9324725bfe1e7860cb7a6b8a34bc89a482920765ebff5c10578eb487e6b46b2f0df263bd27a25edbdae2c45e5ea5d81ae61404301c1a7192c38330
+  languageName: node
+  linkType: hard
+
 "read-installed-packages@npm:^2.0.1":
   version: 2.0.1
   resolution: "read-installed-packages@npm:2.0.1"
@@ -8651,6 +8738,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "tailwind-merge@npm:3.4.0"
+  checksum: 10c0/eaf17bb695c51c7bb7a90366a9c62be295473ee97fcfd1da54287714d4a5788a88ff4ad1ab9e0128638257fda777d6c9ea88682e36195e31a7fa2cf43f45e310
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:4.1.14, tailwindcss@npm:^4.1.14":
   version: 4.1.14
   resolution: "tailwindcss@npm:4.1.14"
@@ -8811,6 +8905,13 @@ __metadata:
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
+  languageName: node
+  linkType: hard
+
+"tw-animate-css@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "tw-animate-css@npm:1.4.0"
+  checksum: 10c0/6cfbc19ccc73883ec80ef1f9147f43e736cb01ee99c8172968b37eb81b720523d30e38b1a96aef92db3c586d864204db5510b51744ddacbbf0ad8e3c7fb56ec7
   languageName: node
   linkType: hard
 
