@@ -42,6 +42,6 @@
       "@i18n/*": ["./src/i18n/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.vue", "**/*.astro", "astro/types.d.ts"],
+  "include": ["**/*.ts", "**/*.vue", "**/*.astro", "**/*.d.ts"],
   "exclude": ["node_modules/*", "**/dist/*"]
 }

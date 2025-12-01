@@ -27,9 +27,9 @@ export function getLangFromUrl(url: URL): keyof typeof ui {
 export function useTranslatedPath(lang: keyof typeof ui) {
   return function translatePath(path: string, language = lang): string {
     // Check if this path should not be translated
-    const shouldSkipTranslation = untranslatedPaths.some((prefix) =>
-      path.startsWith(prefix),
-    );
+    const shouldSkipTranslation = untranslatedPaths.some((prefix) => {
+      return path.startsWith(prefix);
+    });
 
     if (shouldSkipTranslation) {
       return path; // Return path without language prefix

@@ -1,16 +1,8 @@
-import partnerImageBPCE from '../images/partners/bpce.webp';
-import partnerImageMinesPSL from '../images/partners/mines-paris.webp';
-import partnerImagePoshMark from '../images/partners/poshmark.webp';
-import partnerImageZoho from '../images/partners/zoho.webp';
-import partnerImageInnodatatics from '../images/partners/innodatatics.webp';
-import partnerImageCavesNotreDame from '../images/partners/caves-notre-dame.webp';
-
 export const partners = [
-  { src: partnerImageBPCE, alt: 'BPCE' },
-  { src: partnerImagePoshMark, alt: 'PoshMark' },
-  { src: partnerImageZoho, alt: 'Zoho' },
-  { src: partnerImageMinesPSL, alt: 'Mines PSL' },
-  { src: partnerImageInnodatatics, alt: 'Innodatatics' },
-  { src: partnerImageCavesNotreDame, alt: 'Caves Notre Dame' },
+  { alt: 'BPCE', src: '../images/partners/bpce.webp' },
+  { alt: 'PoshMark', src: '../images/partners/poshmark.webp' },
+  { alt: 'Zoho', src: '../images/partners/zoho.webp' },
+  { alt: 'Mines PSL', src: '../images/partners/mines-paris.webp' },
+  { alt: 'Innodatatics', src: '../images/partners/innodatatics.webp' },
+  { alt: 'Caves Notre Dame', src: '../images/partners/caves-notre-dame.webp' },
 ];
-

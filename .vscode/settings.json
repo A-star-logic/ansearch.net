@@ -17,9 +17,6 @@
   "explorer.fileNesting.patterns": {
     "package.json": "eslint.config.js, .prettierignore, .prettierrc.js, .editorconfig, .yarnrc.yml, wrangler.jsonc, astro.config.ts, tailwind.config.ts, yarn.lock, .gitignore, tsconfig.json"
   },
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
   "cSpell.ignorePaths": [
     "package-lock.json",
     "package.json",
@@ -29,9 +26,7 @@
     ".vscode",
     ".vscode-insiders"
   ],
-  "cSpell.words": [
-    "Ansearch"
-  ],
+  "cSpell.words": ["Ansearch"],
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   }
