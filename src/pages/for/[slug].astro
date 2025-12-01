@@ -14,7 +14,7 @@ type LandingPage = CollectionEntry<'landing-pages'>;
 export async function getStaticPaths() {
   const pages = await getCollection(
     'landing-pages',
-    (entry: LandingPage) => entry.data.lang === 'en'
+    (entry: LandingPage) => entry.data.lang === 'en',
   );
 
   return pages.map((page: LandingPage) => ({
