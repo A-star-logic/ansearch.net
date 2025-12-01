@@ -2,13 +2,12 @@
 import astarEslint from '@ansearch/config/linters/eslint.config.js';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(...astarEslint, {
+export default tseslint.config({ ignores: ['.astro/**'] }, ...astarEslint, {
   files: [
     'worker-configuration.d.ts',
-    'src/content/config.ts',
+    'src/content.config.ts',
     'src/lib/utils.ts',
     'src/env.d.ts',
-    '.astro/*',
   ],
   rules: {
     '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -23,6 +22,4 @@ export default tseslint.config(...astarEslint, {
     '@typescript-eslint/consistent-type-imports': 'off',
     'import-x/no-default-export': 'off',
   },
-
-  ignores: ['.astro/*'],
 });

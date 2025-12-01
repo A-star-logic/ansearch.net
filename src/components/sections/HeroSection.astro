@@ -10,9 +10,9 @@ import { BOOKING_URL } from '../../consts';
 interface Props {
   title: string;
   subtitle: string;
-  tagline?: string;
+  tagline?: string | undefined;
   image: ImageMetadata;
-  imageAlt?: string;
+  imageAlt?: string | undefined;
 }
 
 const { title, subtitle, tagline, image, imageAlt = 'Hero' } = Astro.props;

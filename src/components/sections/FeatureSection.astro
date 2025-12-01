@@ -9,7 +9,7 @@ interface Props {
   caption: string;
   title: string;
   image: ImageMetadata;
-  imageAlt?: string;
+  imageAlt?: string | undefined;
 }
 
 const { icon, caption, title, image, imageAlt = '' } = Astro.props;
