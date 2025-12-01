@@ -23,4 +23,6 @@ export default tseslint.config(...astarEslint, {
     '@typescript-eslint/consistent-type-imports': 'off',
     'import-x/no-default-export': 'off',
   },
+
+  ignores: ['.astro/*'],
 });
