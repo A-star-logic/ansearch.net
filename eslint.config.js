@@ -7,6 +7,8 @@ export default tseslint.config(...astarEslint, {
     'worker-configuration.d.ts',
     'src/content/config.ts',
     'src/lib/utils.ts',
+    'src/env.d.ts',
+    '.astro/*',
   ],
   rules: {
     '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -17,5 +19,8 @@ export default tseslint.config(...astarEslint, {
     'unicorn/prevent-abbreviations': 'off',
     'fp/no-rest-parameters': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off',
+    'import-x/no-default-export': 'off',
   },
 });
