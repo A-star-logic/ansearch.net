@@ -1,8 +1,6 @@
-// @ts-expect-error -- deal with it later
 import { defineCollection, z } from 'astro:content';
 
 const landingPages = defineCollection({
-  // @ts-expect-error -- deal with it later
   schema: ({ image }) => {
     return z.object({
       // Feature sections (the "how it works" parts)
@@ -53,7 +51,6 @@ const policies = defineCollection({
 });
 
 const products = defineCollection({
-  // @ts-expect-error -- deal with it later
   schema: ({ image }) => {
     return z.object({
       // Feature sections
