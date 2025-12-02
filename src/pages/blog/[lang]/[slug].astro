@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const posts = await getCollection('blog');
+const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
 
 const entry = posts.find(
   post => post.slug === `${Astro.params.lang}/${Astro.params.slug}`
