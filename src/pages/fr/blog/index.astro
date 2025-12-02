@@ -1,26 +1,31 @@
 ---
-import LayoutDefault from "@layouts/LayoutDefault.astro";
-import ContentVertical from "@components/position/ContentVertical.astro";
-import Sidebar from "@components/single-use/blogsidebarfr.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+export const prerender = false;
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+import Sidebar from '@components/single-use/blogsidebarfr.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-const posts: CollectionEntry<'blog'>[] = (await getCollection("blog"))
-  .filter((p: CollectionEntry<'blog'>) => p.slug.startsWith("fr/"));
-const categories = [...new Set(posts.flatMap(p => p.data.categories))];
-const tags = [...new Set(posts.flatMap(p => p.data.tags || []))];
+const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).filter(
+  (p: CollectionEntry<'blog'>) => p.slug.startsWith('fr/'),
+);
+const categories = [...new Set(posts.flatMap((p) => p.data.categories))];
+const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))];
 
-const url = new URL(Astro.request.url);
-const activeCategory = url.searchParams.get("category");
-const activeTag = url.searchParams.get("tag");
+const url = new URL(Astro.url);
+const activeCategory = url.searchParams.get('category');
+const activeTags = url.searchParams.get('tag')?.split('-') || null;
 
-const filteredPosts = posts.filter(post => {
-  if (activeCategory && post.data.categories.includes(activeCategory)) return false;
-  if (activeTag && !post.data.tags?.includes(activeTag)) return false;
+const filteredPosts = posts.filter((post) => {
+  if (activeCategory && !post.data.categories.includes(activeCategory))
+    return false;
+  if (activeTags && activeTags.every((tag) => !post.data.tags.includes(tag)))
+    return false;
   return true;
 });
 
-console.log(activeCategory, activeTag);
+console.log('DEBUG URL', url.toString());
+console.log('DEBUG activeCategory', url.searchParams.get('category'));
 ---
 
 <LayoutDefault>
@@ -28,10 +33,18 @@ console.log(activeCategory, activeTag);
     <Sidebar {categories} {tags} />
     <ContentVertical>
       <h1>Blog</h1>
-  
+      <p>
+        <!-- DEBUG activeCategory: {activeCategory} | activeTag: {activeTag} -->
+      </p>
       <h2>Archives des articles :</h2>
       <ul>
-        {filteredPosts.map((post) => <li><a href={`/blog/${post.slug}`}>{post.data.title}</a></li>)}
+        {
+          filteredPosts.map((post) => (
+            <li>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </li>
+          ))
+        }
       </ul>
     </ContentVertical>
   </div>
@@ -39,7 +52,7 @@ console.log(activeCategory, activeTag);
 
 <style>
   .blog-container {
-    display: flex;;
+    display: flex;
 
     .flex-vertical {
       width: 100%;

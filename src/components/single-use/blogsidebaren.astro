@@ -1,38 +1,61 @@
 ---
 const { categories, tags } = Astro.props;
 
-const currentUrl = new URL(Astro.request.url);
+const currentUrl = new URL(Astro.url);
+const activeCategory = currentUrl.searchParams.get('category');
+const activeTags = currentUrl.searchParams.get('tag')?.split('-') || null;
 ---
 
 <aside>
   <div class="filter">
     <h3>Categories</h3>
     <ul>
-      {categories.map((cat: string) => {
-        const url = new URL(currentUrl);
-        url.searchParams.set("category", cat);
-        url.searchParams.delete("tag");
-        return (
-          <li>
-            <a href={url}>{cat}</a>
-          </li>
-        );
-      })}
+      {
+        categories.map((cat: string) => {
+          const url = new URL(currentUrl);
+          url.searchParams.set('category', cat);
+          const active = activeCategory === cat;
+          return (
+            <li class={active ? 'font-bold' : ''}>
+              <a href={url}>{cat}</a>
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
 
   <div class="filter">
     <h3>Tags</h3>
     <ul>
-      {tags.map((tag: string) => {
-        const url = new URL(currentUrl);
-        url.searchParams.set("tag", tag);
-        return (
-          <li>
-            <a href={url}>{tag}</a>
-          </li>
-        );
-      })}
+      {
+        tags.map((tag: string) => {
+          const url = new URL(currentUrl);
+          const currentTags = (url.searchParams.get('tag') || '')
+            .split('-')
+            .filter(Boolean);
+          const active = currentTags.includes(tag);
+
+          let newTags: string[];
+          if (active) {
+            newTags = currentTags.filter((t) => t !== tag);
+          } else {
+            newTags = [...currentTags, tag];
+          }
+
+          if (newTags.length > 0) {
+            url.searchParams.set('tag', newTags.join('-'));
+          } else {
+            url.searchParams.delete('tag');
+          }
+
+          return (
+            <li class={active ? 'font-bold' : ''}>
+              <a href={url.toString()}>{tag}</a>
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
 
