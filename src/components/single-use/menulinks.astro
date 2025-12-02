@@ -1,32 +1,97 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import {
   useTranslatedPath,
   getLangFromUrl,
   useTranslations,
 } from '@i18n/utilities';
 import Btn from '@components/ui/Btn.astro';
+import { BOOKING_URL, LOGIN_URL } from '../../consts';
+import SolutionsDropdown from './SolutionsDropdown.astro';
+// import ProductsDropdown from './ProductsDropdown.astro';
+import { Icon } from 'astro-icon/components';
+
+type LandingPage = CollectionEntry<'landing-pages'>;
+// type Product = CollectionEntry<'products'>;
+
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-const translation = useTranslations(lang);
+const t = useTranslations(lang);
+
+// Get solutions for mobile menu
+const allPages = await getCollection(
+  'landing-pages',
+  (entry: LandingPage) =>
+    entry.data.lang === lang && entry.data.nav !== undefined,
+);
+const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
+  const orderA = a.data.nav?.order ?? 999;
+  const orderB = b.data.nav?.order ?? 999;
+  return orderA - orderB;
+});
+
+// Get products for mobile menu
+// const allProducts = await getCollection(
+//   'products',
+//   (entry: Product) => entry.data.lang === lang,
+// );
+// const products = allProducts.sort((a: Product, b: Product) => {
+//   const orderA = a.data.nav?.order ?? 999;
+//   const orderB = b.data.nav?.order ?? 999;
+//   return orderA - orderB;
+// });
 ---
 
-<a href={translatePath('/')}>{translation.navbar.home}</a>
-<a href={translatePath('/blog')}>{translation.navbar.blog}</a>
-<a href={translatePath('/support')}>{translation.navbar.support}</a>
-<a
-  class="mobile"
-  rel="noopener noreferrer"
-  href="https://app.ansearch.net/login"
->
-  <Btn variant="secondary" size="max">Login</Btn>
+<a href={translatePath('/')}>{t.navbar.home}</a>
+
+<!-- Desktop dropdowns -->
+<!-- <div class="desktop">
+  <ProductsDropdown />
+</div> -->
+<div class="desktop">
+  <SolutionsDropdown />
+</div>
+
+<!-- Mobile products list -->
+<!-- <div class="mobile nav-section">
+  <span class="section-header">{t.navbar.products}</span>
+  {
+    products.map((product: Product) => (
+      <a
+        href={translatePath(`/products/${product.data.pageSlug}`)}
+        class="nav-link"
+      >
+        {product.data.nav?.icon && (
+          <Icon name={product.data.nav.icon} class="nav-icon" />
+        )}
+        <span>{product.data.nav?.title}</span>
+      </a>
+    ))
+  }
+</div> -->
+
+<!-- Mobile solutions list -->
+<div class="mobile nav-section">
+  <span class="section-header">{t.navbar.solutions}</span>
+  {
+    solutions.map((page: LandingPage) => (
+      <a href={translatePath(`/for/${page.data.pageSlug}`)} class="nav-link">
+        {page.data.nav?.icon && (
+          <Icon name={page.data.nav.icon} class="nav-icon" />
+        )}
+        <span>{page.data.nav?.title}</span>
+      </a>
+    ))
+  }
+</div>
+
+<a href={translatePath('/support')}>{t.navbar.support}</a>
+<a class="mobile" rel="noopener noreferrer" href={LOGIN_URL}>
+  <Btn variant="secondary" size="max">{t.navbar.login}</Btn>
 </a>
-<a
-  class="mobile"
-  rel="noopener noreferrer"
-  target="_blank"
-  href="https://cal.com/olivia-maraval-cal"
->
-  <Btn size="max">{translation.cta}</Btn>
+<a class="mobile" rel="noopener noreferrer" target="_blank" href={BOOKING_URL}>
+  <Btn size="max">{t.cta}</Btn>
 </a>
 
 <style>
@@ -37,5 +102,30 @@ const translation = useTranslations(lang);
     &:hover {
       @apply text-amber-600;
     }
+  }
+
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    @apply border-y border-stone-200 my-2 py-2;
+  }
+
+  .nav-section + .nav-section {
+    @apply border-t-0 mt-0 pt-0;
+  }
+
+  .section-header {
+    @apply px-2 py-1 text-stone-500 text-sm font-semibold;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    @apply pl-4 py-2;
+  }
+
+  .nav-icon {
+    @apply text-amber-600;
   }
 </style>

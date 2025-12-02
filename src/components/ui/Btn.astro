@@ -1,5 +1,6 @@
 ---
 interface Props {
+  color?: string | undefined;
   /** Whether the button is disabled (default: false). */
   disabled?: boolean;
   /**
@@ -11,7 +12,7 @@ interface Props {
    * - `xs` for a very small button
    * - `max` for a button that takes the full width of the container
    */
-  size?: "icon" | "icon-rounded" | "lg" | "max" | "sm" | "xs";
+  size?: 'icon' | 'icon-rounded' | 'lg' | 'max' | 'sm' | 'xs';
   /**
    *
    * The visual style variant of the button
@@ -24,19 +25,20 @@ interface Props {
    * - `outline` for not important actions, or backtracking
    */
   variant?:
-    | "destructive"
-    | "ghost"
-    | "link"
-    | "outline"
-    | "primary"
-    | "secondary"
-    | "on-color";
+    | 'destructive'
+    | 'ghost'
+    | 'link'
+    | 'outline'
+    | 'primary'
+    | 'secondary'
+    | 'on-color';
 }
-const { variant, size, disabled } = Astro.props;
+const { variant, size, disabled, color = undefined } = Astro.props;
 const classes = [
-  variant ? `variant-${variant}` : "variant-primary",
-  size ? `size-${size}` : "size-default",
-  disabled ? "disabled" : "",
+  variant ? `variant-${variant}` : 'variant-primary',
+  size ? `size-${size}` : 'size-default',
+  disabled ? 'disabled' : '',
+  color ? `${color}` : '',
 ];
 ---
 

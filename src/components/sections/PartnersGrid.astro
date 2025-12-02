@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import ContentVertical from '@components/position/ContentVertical.astro';
+import Grid3 from '@components/position/Grid3.astro';
+import { partners } from '../../data/partners';
+import { getLangFromUrl, useTranslations } from '@i18n/utilities';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ContentVertical whiteBackground>
+  <p class="text-stone-500">{t.sections.partners.label}</p>
+  <Grid3>
+    {
+      partners.map((partner) => (
+        <Image
+          class="object-cover mx-auto md:max-w-52 md:max-h-10 h-auto w-auto"
+          src={partner.src}
+          alt={partner.alt}
+        />
+      ))
+    }
+  </Grid3>
+</ContentVertical>

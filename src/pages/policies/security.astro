@@ -7,7 +7,7 @@ import { getLangFromUrl } from '@i18n/utilities';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
-import TrustImage from '../../images/Trust.png';
+import TrustImage from '../../images/landing/data_retention.png';
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -67,7 +67,7 @@ const translatePath = useTranslatedPath(lang);
   <ContentHorizontal whiteBackground>
     <div class="security-copy">
       <Icon name="lucide:copy-x" class="icon" />
-      <h3>No duplication</h3>
+      <h3>No duplication (optional)</h3>
       <p>
         We are using ground breaking technology that allows our solution to work
         without ever storing your company data. When you use Ansearch, all
@@ -75,19 +75,24 @@ const translatePath = useTranslatedPath(lang);
         we use are discarded after.
         <br />
         <br />
-        <em
-          >A more concrete example: when you search, we find emails, contacts
-          and documents; we answer you based on their content and keep a link to
+        <em>
+          A more concrete example: when you search, we find emails, contacts and
+          documents; we answer you based on their content and keep a link to
           display. Once our AI is finished, all the emails, contact and
-          documents are discarded, and we only keep the answer.</em
-        >
+          documents are discarded, and we only keep the answer.
+        </em>
         <br />
         <br />
-        <!-- <em class="text-sm text-stone-500">
-          *: in some extremely rare case we do need to copy some data. Those tools
-          are locked by default, and require you to talk to our team before
-          connecting to them, so we can brief you.
-        </em> -->
+        This feature is optional, as it can impact a little bit performance (around
+        10s per search). You can choose to enable this feature to have zero duplication
+        of your data, or choose to have a copy of your data in our database for faster
+        responses.
+        <br />
+        <br />
+        <em>
+          This feature is enabled by default, and cannot be disabled on entry
+          level plans.
+        </em>
       </p>
     </div>
     <Image src={TrustImage} class="h-auto md:max-w-lg" alt="No duplication" />

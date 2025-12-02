@@ -1,0 +1,30 @@
+---
+import ContentHorizontal from '@components/position/ContentHorizontal.astro';
+import CopySection from '@components/ui/CopySection.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+interface Props {
+  icon: string;
+  caption: string;
+  title: string;
+  image: ImageMetadata;
+  imageAlt?: string | undefined;
+}
+
+const { icon, caption, title, image, imageAlt = '' } = Astro.props;
+---
+
+<ContentHorizontal>
+  <CopySection>
+    <Fragment slot="header-caption">
+      <Icon name={icon} />
+      {caption}
+    </Fragment>
+    <Fragment slot="header-title">{title}</Fragment>
+    <Fragment slot="content">
+      <slot />
+    </Fragment>
+  </CopySection>
+  <Image src={image} class="h-auto md:max-w-lg" alt={imageAlt} />
+</ContentHorizontal>

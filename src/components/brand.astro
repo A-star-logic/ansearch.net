@@ -7,20 +7,21 @@ const { coloredBackground } = Astro.props;
 ---
 
 <div class="brand-container">
-  <img src="/favicon.svg" alt="Logo" class="w-6 md:w-10" />
+  <img src="/logo.webp" alt="Logo" class="w-6 md:w-10" />
   <div class="brand">
     <div
       class="brand-name"
-      class:list={[coloredBackground ? "!text-white" : ""]}
+      class:list={[coloredBackground ? '!text-white' : '']}
     >
       Ansearch
     </div>
     <div
       class="brand-subtitle"
-      class:list={[coloredBackground ? "!text-white" : ""]}
+      class:list={[coloredBackground ? '!text-white' : '']}
     >
-      An<em class:list={[coloredBackground ? "!text-white" : ""]}>[swer &]</em
-      >Search
+      An
+      <em class:list={[coloredBackground ? '!text-white' : '']}>[swer &] </em>
+      Search
     </div>
   </div>
 </div>

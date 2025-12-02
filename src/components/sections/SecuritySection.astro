@@ -1,0 +1,42 @@
+---
+import ContentHorizontal from '@components/position/ContentHorizontal.astro';
+import CopySection from '@components/ui/CopySection.astro';
+import Btn from '@components/ui/Btn.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@i18n/utilities';
+
+import TrustImage from '../../images/landing/trust.png';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<ContentHorizontal whiteBackground>
+  <CopySection color="text-cyan-600">
+    <Fragment slot="header-caption">
+      <Icon name="streamline:shield-check-solid" />
+      {t.sections.security.caption}
+    </Fragment>
+    <Fragment slot="header-title">
+      <Fragment set:html={t.sections.security.title} />
+    </Fragment>
+    <Fragment slot="content">
+      <Fragment set:html={t.sections.security.content} />
+    </Fragment>
+    <Fragment slot="footer">
+      <a href={translatePath('/policies/security')}>
+        <Btn variant="link" color="text-cyan-600">
+          {t.sections.security.learnMore}
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </a>
+    </Fragment>
+  </CopySection>
+  <Image src={TrustImage} class="h-auto md:max-w-lg" alt="Trust" />
+</ContentHorizontal>

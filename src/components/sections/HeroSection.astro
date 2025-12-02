@@ -1,0 +1,36 @@
+---
+import Hero from '@components/ui/Hero.astro';
+import ContentVertical from '@components/position/ContentVertical.astro';
+import Btn from '@components/ui/Btn.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import { getLangFromUrl, useTranslations } from '@i18n/utilities';
+import { BOOKING_URL } from '../../consts';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  tagline?: string | undefined;
+  image: ImageMetadata;
+  imageAlt?: string | undefined;
+}
+
+const { title, subtitle, tagline, image, imageAlt = 'Hero' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Hero>
+  <ContentVertical>
+    <h1 class="!text-white">{title}</h1>
+    <p class="max-w-[80ch]">{subtitle}</p>
+    {tagline && <em>{tagline}</em>}
+    <a rel="noopener noreferrer" target="_blank" href={BOOKING_URL}>
+      <Btn variant="on-color">
+        {t.cta}
+        <Icon name="fa7-solid:arrow-right" />
+      </Btn>
+    </a>
+    <Image src={image} class="h-auto md:max-w-lg" alt={imageAlt} />
+  </ContentVertical>
+</Hero>
