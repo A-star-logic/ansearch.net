@@ -1,14 +1,31 @@
 ---
+import { getLangFromUrl } from '@/i18n/utilities';
+
 const { categories, tags } = Astro.props;
 
 const currentUrl = new URL(Astro.url);
+const lang = getLangFromUrl(Astro.url);
+const getTranslation = (key: string, lang: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      categories: 'Categories',
+      tags: 'Tags',
+      reset: 'Reset filters',
+    },
+    fr: {
+      categories: 'Catégories',
+      tags: 'Étiquettes',
+      reset: 'Réinitialiser les filtres',
+    },
+  };
+  return translations[lang]?.[key] ?? key;
+};
 const activeCategory = currentUrl.searchParams.get('category');
-const activeTags = currentUrl.searchParams.get('tag')?.split('-') || null;
 ---
 
 <aside>
   <div class="filter">
-    <h3>Categories</h3>
+    <h3>{getTranslation('categories', lang)}</h3>
     <ul>
       {
         categories.map((cat: string) => {
@@ -26,7 +43,7 @@ const activeTags = currentUrl.searchParams.get('tag')?.split('-') || null;
   </div>
 
   <div class="filter">
-    <h3>Tags</h3>
+    <h3>{getTranslation('tags', lang)}</h3>
     <ul>
       {
         tags.map((tag: string) => {
@@ -59,7 +76,7 @@ const activeTags = currentUrl.searchParams.get('tag')?.split('-') || null;
     </ul>
   </div>
 
-  <p><a href="/blog">Reset filters</a></p>
+  <p><a href=`/${lang}/blog`>{getTranslation('reset', lang)}</a></p>
 </aside>
 
 <style>
