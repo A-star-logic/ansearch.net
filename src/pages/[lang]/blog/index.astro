@@ -2,12 +2,12 @@
 export const prerender = false;
 import LayoutDefault from '@layouts/LayoutDefault.astro';
 import ContentVertical from '@components/position/ContentVertical.astro';
-import Sidebar from '@components/single-use/blogsidebarfr.astro';
+import Sidebar from '@components/single-use/blogsidebaren.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).filter(
-  (p: CollectionEntry<'blog'>) => p.slug.startsWith('fr/'),
+  (p: CollectionEntry<'blog'>) => p.data.lang === 'en',
 );
 const categories = [...new Set(posts.flatMap((p) => p.data.categories))];
 const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))];
@@ -23,9 +23,6 @@ const filteredPosts = posts.filter((post) => {
     return false;
   return true;
 });
-
-console.log('DEBUG URL', url.toString());
-console.log('DEBUG activeCategory', url.searchParams.get('category'));
 ---
 
 <LayoutDefault>
@@ -33,10 +30,7 @@ console.log('DEBUG activeCategory', url.searchParams.get('category'));
     <Sidebar {categories} {tags} />
     <ContentVertical>
       <h1>Blog</h1>
-      <p>
-        <!-- DEBUG activeCategory: {activeCategory} | activeTag: {activeTag} -->
-      </p>
-      <h2>Archives des articles :</h2>
+      <h2>Articles archive :</h2>
       <ul>
         {
           filteredPosts.map((post) => (

@@ -91,6 +91,7 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     layout: z.string(),
+    lang: z.string(),
     title: z.string(),
     author: z.string(),
     categories: z.array(z.string()).default([]),

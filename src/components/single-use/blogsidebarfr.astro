@@ -2,6 +2,7 @@
 const { categories, tags } = Astro.props;
 
 const currentUrl = new URL(Astro.url);
+const activeCategory = currentUrl.searchParams.get('category');
 ---
 
 <aside>
@@ -12,8 +13,9 @@ const currentUrl = new URL(Astro.url);
         categories.map((cat: string) => {
           const url = new URL(currentUrl);
           url.searchParams.set('category', cat);
+          const active = activeCategory === cat;
           return (
-            <li>
+            <li class={active ? 'font-bold' : ''}>
               <a href={url}>{cat}</a>
             </li>
           );

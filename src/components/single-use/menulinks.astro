@@ -86,7 +86,7 @@ const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
   }
 </div>
 
-<a href={translatePath('/blog')}>{t.navbar.blog}</a>
+<a href=`/${lang}/blog`>{t.navbar.blog}</a>
 <a href={translatePath('/support')}>{t.navbar.support}</a>
 <a class="mobile" rel="noopener noreferrer" href={LOGIN_URL}>
   <Btn variant="secondary" size="max">{t.navbar.login}</Btn>

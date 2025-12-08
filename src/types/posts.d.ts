@@ -2,6 +2,7 @@ import type { MarkdownInstance } from 'astro';
 
 export type BlogPost = MarkdownInstance<{
   layout: string;
+  lang: string;
   title: string;
   author: string;
   category: string;
