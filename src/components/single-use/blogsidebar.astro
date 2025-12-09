@@ -25,6 +25,23 @@ const activeCategory = currentUrl.searchParams.get('category');
 
 <aside>
   <div class="filter">
+    <form method="get">
+      <input
+        type="text"
+        name="q"
+        placeholder={lang === 'fr' ? 'Rechercher...' : 'Search...'}
+        value={currentUrl.searchParams.get('q') || ''}
+        class="search-input"
+      />
+
+      {
+        [...currentUrl.searchParams.entries()].map(([key, value]) =>
+          key !== 'q' ? <input type="hidden" name={key} value={value} /> : null,
+        )
+      }
+    </form>
+  </div>
+  <div class="filter">
     <h3>{getTranslation('categories', lang)}</h3>
     <ul>
       {
@@ -84,6 +101,10 @@ const activeCategory = currentUrl.searchParams.get('category');
 
   aside {
     @apply bg-white w-[250px] h-full border-r border-gray-200 px-4 py-12;
+  }
+
+  .search-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded;
   }
 
   .filter {

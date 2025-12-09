@@ -16,6 +16,14 @@ const getTitle = (lang: string) => {
       return 'Articles archive';
   }
 };
+const getNoResults = (lang: string) => {
+  switch (lang) {
+    case 'fr':
+      return 'Désolé, aucun article ne correspond à vos critères.';
+    default:
+      return 'Sorry, no articles match your criteria.';
+  }
+};
 
 const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).filter(
   (p: CollectionEntry<'blog'>) => p.data.lang === lang,
@@ -26,11 +34,26 @@ const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))];
 const url = new URL(Astro.url);
 const activeCategory = url.searchParams.get('category');
 const activeTags = url.searchParams.get('tag')?.split('-') || null;
+const activeSearch = url.searchParams.get('q')?.toLowerCase() || null;
 
 const filteredPosts = posts.filter((post) => {
+  const front = post.data;
+  const searchTable = [
+    front.title,
+    front.author,
+    ...(front.tags || []),
+    ...(front.categories || []),
+    post.body,
+  ];
+
   if (activeCategory && !post.data.categories.includes(activeCategory))
     return false;
   if (activeTags && activeTags.every((tag) => !post.data.tags.includes(tag)))
+    return false;
+  if (
+    activeSearch &&
+    searchTable.every((field) => !field.toLowerCase().includes(activeSearch))
+  )
     return false;
   return true;
 });
@@ -41,14 +64,18 @@ const filteredPosts = posts.filter((post) => {
     <Sidebar {categories} {tags} />
     <ContentVertical>
       <h1>Blog</h1>
-      <h2>{getTitle(lang)}</h2>
+      <h2 class="results-list">{getTitle(lang)}</h2>
       <ul>
         {
-          filteredPosts.map((post) => (
-            <li>
-              <a href={`blog/${post.slug}`}>{post.data.title}</a>
-            </li>
-          ))
+          filteredPosts.length === 0 ? (
+            <li>{getNoResults(lang)}</li>
+          ) : (
+            filteredPosts.map((post) => (
+              <li>
+                <a href={`blog/${post.slug}`}>{post.data.title}</a>
+              </li>
+            ))
+          )
         }
       </ul>
     </ContentVertical>
