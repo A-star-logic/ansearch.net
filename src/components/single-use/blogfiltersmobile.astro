@@ -23,8 +23,8 @@ const getTranslation = (key: string, lang: string) => {
 const activeCategory = currentUrl.searchParams.get('category');
 ---
 
-<aside>
-  <div class="filter">
+<div class="filters-mobile">
+  <div class="filters-head">
     <form method="get">
       <input
         type="text"
@@ -40,8 +40,20 @@ const activeCategory = currentUrl.searchParams.get('category');
         )
       }
     </form>
+    <button id="toggle-filters">
+      <svg
+        class="filters-icon"
+        style="vertical-align: middle;fill: currentColor;overflow: hidden;"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M640 288a64 64 0 1 1 0.032-128.032A64 64 0 0 1 640 288z m123.456-96c-14.304-55.04-64-96-123.456-96s-109.152 40.96-123.456 96H128v64h388.544c14.304 55.04 64 96 123.456 96s109.152-40.96 123.456-96H896V192h-132.544zM640 864a64 64 0 1 1 0.032-128.032A64 64 0 0 1 640 864m0-192c-59.456 0-109.152 40.96-123.456 96H128v64h388.544c14.304 55.04 64 96 123.456 96s109.152-40.96 123.456-96H896v-64h-132.544c-14.304-55.04-64-96-123.456-96M384 576a64 64 0 1 1 0.032-128.032A64 64 0 0 1 384 576m0-192c-59.456 0-109.152 40.96-123.456 96H128v64h132.544c14.304 55.04 64 96 123.456 96s109.152-40.96 123.456-96H896v-64H507.456c-14.304-55.04-64-96-123.456-96"
+          fill="#181818"></path></svg
+      >
+    </button>
   </div>
-  <div class="filter">
+  <div class="filter hidden">
     <h3>{getTranslation('categories', lang)}</h3>
     <ul>
       {
@@ -59,7 +71,7 @@ const activeCategory = currentUrl.searchParams.get('category');
     </ul>
   </div>
 
-  <div class="filter">
+  <div class="filter hidden">
     <h3>{getTranslation('tags', lang)}</h3>
     <ul>
       {
@@ -93,22 +105,38 @@ const activeCategory = currentUrl.searchParams.get('category');
     </ul>
   </div>
 
-  <p><a href=`/${lang}/blog`>{getTranslation('reset', lang)}</a></p>
-</aside>
+  <p class="filter hidden">
+    <a href=`/${lang}/blog`>{getTranslation('reset', lang)}</a>
+  </p>
+</div>
 
 <style>
   @reference "tailwindcss";
 
-  aside {
-    @apply bg-white w-[250px] h-full border-r border-gray-200 px-4 py-12 hidden sm:block;
+  .filters-mobile {
+    backdrop-filter: blur(5px);
+    border: 1px solid;
+    @apply sticky top-16 w-full px-4 pt-4 sm:hidden bg-white/70 rounded-3xl shadow-lg border-t-stone-50/60 border-l-stone-50/60 border-r-stone-300/60 border-b-stone-300/60;
+  }
+
+  .filters-head {
+    @apply flex gap-4 items-center justify-center mb-4;
   }
 
   .search-input {
     @apply w-full px-3 py-2 border border-gray-300 rounded;
   }
 
+  .filters-icon {
+    @apply w-8 h-8 text-gray-600;
+  }
+
   .filter {
-    margin-bottom: 1.5rem;
+    @apply mb-4;
+
+    &:not(:last-child) {
+      @apply border-b border-gray-300 pb-4;
+    }
 
     h3 {
       @apply text-lg font-bold mb-2;
@@ -133,3 +161,14 @@ const activeCategory = currentUrl.searchParams.get('category');
     }
   }
 </style>
+
+<script>
+  const toggleButton = document.getElementById('toggle-filters');
+  const filterSections = document.querySelectorAll('.filter');
+
+  toggleButton?.addEventListener('click', () => {
+    filterSections.forEach((section) => {
+      section.classList.toggle('hidden');
+    });
+  });
+</script>

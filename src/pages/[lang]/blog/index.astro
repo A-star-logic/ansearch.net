@@ -3,6 +3,7 @@ export const prerender = false;
 import LayoutDefault from '@layouts/LayoutDefault.astro';
 import ContentVertical from '@components/position/ContentVertical.astro';
 import Sidebar from '@components/single-use/blogsidebar.astro';
+import FiltersMobile from '@components/single-use/blogfiltersmobile.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl } from '@/i18n/utilities';
@@ -64,6 +65,7 @@ const filteredPosts = posts.filter((post) => {
     <Sidebar {categories} {tags} />
     <ContentVertical>
       <h1>Blog</h1>
+      <FiltersMobile {categories} {tags} />
       <h2 class="results-list">{getTitle(lang)}</h2>
       <ul>
         {
