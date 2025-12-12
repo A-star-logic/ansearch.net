@@ -18,7 +18,7 @@ export const tools: { [key: string]: Tool } = {
     isPriceListedWithoutTraining: 5,
     isTrainingOnData: 4,
     tag: 'Chatbot',
-    url: 'https://ansearch.net',
+    url: 'https://ansearch.ai',
   },
   'Anthropic API': {
     description:
