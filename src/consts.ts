@@ -7,5 +7,5 @@ export const SITE_DESCRIPTION =
 
 // External URLs
 export const BOOKING_URL = 'https://cal.com/olivia-maraval-cal';
-export const LOGIN_URL = 'https://app.ansearch.net/login';
+export const LOGIN_URL = 'https://app.ansearch.ai/login';
 export const LINKEDIN_URL = 'https://linkedin.com/company/ansearch';
