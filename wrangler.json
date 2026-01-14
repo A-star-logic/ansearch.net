@@ -12,6 +12,10 @@
   "placement": { "mode": "smart" },
   "routes": [
     {
+      "pattern": "ansearch.ai",
+      "custom_domain": true
+    },
+    {
       "pattern": "ansearch.net",
       "custom_domain": true
     }
