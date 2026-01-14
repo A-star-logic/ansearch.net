@@ -1,13 +1,79 @@
 ---
 import BaseLayout from './base.astro';
 import ContentVertical from '@components/position/ContentVertical.astro';
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
+
+import { getLangFromUrl } from '@/i18n/utilities';
+const lang = getLangFromUrl(Astro.url);
+const getTranslation = (key: string, lang: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      backtoarticles: 'Back to articles',
+      by: 'By',
+      category: 'Category',
+      posted: 'Posted on',
+    },
+    fr: {
+      backtoarticles: 'Retour aux articles',
+      by: 'Par',
+      category: 'Catégorie',
+      posted: 'Publié le',
+    },
+  };
+  return translations[lang]?.[key] ?? key;
+};
 ---
 
 <BaseLayout>
   <ContentVertical>
-    <h1>{frontmatter.title}</h1>
-    <p class="post-meta">By {frontmatter.author} | Category: {frontmatter.categories} | Posted on: {frontmatter['date']}</p>
-    <slot />
+    <div class="container">
+      <div class="container-back">
+        <a class="back" href=`/${lang}/blog`
+          >← {getTranslation('backtoarticles', lang)}</a
+        >
+      </div>
+      <div class="head">
+        <h1>{frontmatter.title}</h1>
+        <p class="post-meta">
+          {getTranslation('by', lang)}
+          {frontmatter.author} | {getTranslation('category', lang)}: {
+            frontmatter.categories
+          } | {getTranslation('posted', lang)}
+          {frontmatter['date']}
+        </p>
+      </div>
+      <slot />
+    </div>
   </ContentVertical>
 </BaseLayout>
+
+<style is:global>
+  @reference "tailwindcss";
+
+  .container {
+    @apply max-w-[1200px] pl-8 md:pl-12 pr-8 md:pr-12 text-left;
+  }
+
+  .head {
+    @apply text-center;
+  }
+
+  .container-back {
+    @apply w-full flex justify-start mb-8;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply my-4;
+  }
+
+  .post-meta {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .back {
+    @apply inline-block mb-4 bg-amber-600 text-white font-bold px-4 py-2 rounded-full hover:bg-amber-700 transition;
+  }
+</style>
