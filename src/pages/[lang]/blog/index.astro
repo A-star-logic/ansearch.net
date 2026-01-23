@@ -9,21 +9,19 @@ import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl } from '@/i18n/utilities';
 
 const lang = getLangFromUrl(Astro.url);
-const getTitle = (lang: string) => {
-  switch (lang) {
-    case 'fr':
-      return 'Liste des articles';
-    default:
-      return 'Articles archive';
-  }
-};
-const getNoResults = (lang: string) => {
-  switch (lang) {
-    case 'fr':
-      return 'Désolé, aucun article ne correspond à vos critères.';
-    default:
-      return 'Sorry, no articles match your criteria.';
-  }
+
+const getTranslation = (key: string, lang: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      articlestitle: 'Articles archive',
+      noresults: 'Sorry, no articles match your criteria.',
+    },
+    fr: {
+      articlestitle: 'Liste des articles',
+      noresults: 'Désolé, aucun article ne correspond à vos critères.',
+    },
+  };
+  return translations[lang]?.[key] ?? key;
 };
 
 const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).filter(
@@ -61,20 +59,38 @@ const filteredPosts = posts.filter((post) => {
 ---
 
 <LayoutDefault>
+  <FiltersMobile {categories} {tags} />
   <div class="blog-container">
     <Sidebar {categories} {tags} />
     <ContentVertical>
       <h1>Blog</h1>
-      <FiltersMobile {categories} {tags} />
-      <h2 class="results-list">{getTitle(lang)}</h2>
-      <ul>
+      <h2>{getTranslation('articlestitle', lang)}</h2>
+      <ul class="results-list">
         {
           filteredPosts.length === 0 ? (
-            <li>{getNoResults(lang)}</li>
+            <li>{getTranslation('noresults', lang)}</li>
           ) : (
             filteredPosts.map((post) => (
-              <li>
-                <a href={`blog/${post.slug}`}>{post.data.title}</a>
+              <li class="results-item">
+                <a href={`blog/${post.slug}`}>
+                  <div class="results-item-date">{post.data.date}</div>
+                  <div class="results-item-title">
+                    {post.data.title}
+                    <span class="results-item-tags">
+                      {post.data.tags.map((tag) => (
+                        <>
+                          {' '}
+                          <a
+                            href={`?tag=${encodeURIComponent(tag)}`}
+                            class="results-item-tags-tag"
+                          >
+                            {tag}
+                          </a>
+                        </>
+                      ))}
+                    </span>
+                  </div>
+                </a>
               </li>
             ))
           )
@@ -85,11 +101,40 @@ const filteredPosts = posts.filter((post) => {
 </LayoutDefault>
 
 <style>
+  @reference "tailwindcss";
+
   .blog-container {
     display: flex;
 
     .flex-vertical {
       width: 100%;
     }
+  }
+
+  .results-list {
+    @apply mt-10 px-4 w-full max-w-[1200px];
+  }
+  .results-item {
+    @apply py-8 border-b border-gray-300 w-full;
+
+    &:first-child {
+      @apply border-t;
+    }
+  }
+
+  .results-item-date {
+    @apply text-sm text-gray-400 mb-2;
+  }
+
+  .results-item-title {
+    @apply text-2xl font-bold text-amber-600;
+  }
+
+  .results-item-tags {
+    @apply ml-2;
+  }
+
+  .results-item-tags-tag {
+    @apply text-sm text-gray-500 font-normal hover:text-gray-800 transition border border-gray-300 px-2 py-1 rounded-full mr-2;
   }
 </style>
