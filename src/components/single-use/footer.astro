@@ -2,15 +2,14 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import CopySection from '@components/ui/CopySection.astro';
-import Btn from '@components/ui/Btn.astro';
+import CtaGroup from '@components/ui/CtaGroup.astro';
 import {
   useTranslatedPath,
   getLangFromUrl,
   useTranslations,
 } from '@i18n/utilities';
 import Brand from '@components/brand.astro';
-import { Icon } from 'astro-icon/components';
-import { BOOKING_URL, LINKEDIN_URL } from '../../consts';
+import { LINKEDIN_URL } from '../../consts';
 
 type LandingPage = CollectionEntry<'landing-pages'>;
 // type Product = CollectionEntry<'products'>;
@@ -51,12 +50,7 @@ const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
           {t.footer.banner}
         </Fragment>
         <Fragment slot="footer">
-          <a rel="noopener noreferrer" target="_blank" href={BOOKING_URL}>
-            <Btn>
-              {t.cta}
-              <Icon name="fa7-solid:arrow-right" />
-            </Btn>
-          </a>
+          <CtaGroup />
         </Fragment>
       </CopySection>
     </div>
@@ -70,6 +64,7 @@ const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
       <ul>
         <li class="row-title">{t.footer.company}</li>
         <li><a href={translatePath('/')}>{t.footer.product}</a></li>
+        <li><a href={translatePath('/pricing')}>{t.navbar.pricing}</a></li>
         <li><a href={translatePath('/support')}>{t.footer.contact}</a></li>
       </ul>
       <!-- <ul>

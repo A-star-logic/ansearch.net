@@ -1,0 +1,319 @@
+---
+import LayoutDefault from '@layouts/LayoutDefault.astro';
+import Card from '@components/ui/Card.astro';
+import Btn from '@components/ui/Btn.astro';
+import Accordion from '@components/ui/Accordion.astro';
+import AccordionDropdown from '@components/ui/AccordionDropdown.astro';
+import { Icon } from 'astro-icon/components';
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from '@i18n/utilities';
+import { LOGIN_URL } from '../../consts';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<LayoutDefault>
+  <div class="pricing-page">
+    <!-- Beta Pricing Banner -->
+    <div class="beta-banner">
+      <p class="beta-banner-title">{t.pricing.betaBanner}</p>
+      <p class="beta-banner-description">{t.pricing.betaSubtext}</p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-cards">
+      <!-- Card 1: Ask - Beta -->
+      <Card>
+        <div class="card-content">
+          <h2 class="card-title">Ask - Beta</h2>
+          <p class="card-description">{t.pricing.betaLicenseDescription}</p>
+          <div class="price-container">
+            <div class="price-flex">
+              <span class="original-price">24€</span>
+              <span class="current-price">12€</span>
+              <span class="price-unit">{t.pricing.perUserPerMonth}</span>
+            </div>
+          </div>
+          <ul class="features-list">
+            <li>{t.pricing.ask.feature1}</li>
+            <li>{t.pricing.ask.feature2}</li>
+            <li>{t.pricing.ask.feature3}</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href={LOGIN_URL} class="cta-link">
+            <Btn size="max">
+              {t.pricing.subscribeNow}
+              <Icon name="fa7-solid:arrow-right" />
+            </Btn>
+          </a>
+        </div>
+      </Card>
+
+      <!-- Card 2: Forage - Beta -->
+      <Card>
+        <div class="card-content">
+          <h2 class="card-title">Forage - Beta</h2>
+          <p class="card-description">{t.pricing.betaLicenseDescription}</p>
+          <div class="price-container">
+            <div class="price-flex">
+              <span class="original-price">60€</span>
+              <span class="current-price">30€</span>
+              <span class="price-unit">{t.pricing.perUserPerMonth}</span>
+            </div>
+          </div>
+          <ul class="features-list">
+            <li>{t.pricing.forage.feature1}</li>
+            <li>{t.pricing.forage.feature2}</li>
+            <li>{t.pricing.forage.feature3}</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href={LOGIN_URL}
+            class="cta-link"
+          >
+            <Btn size="max">
+              {t.pricing.subscribeNow}
+              <Icon name="fa7-solid:arrow-right" />
+            </Btn>
+          </a>
+        </div>
+      </Card>
+
+      <!-- Card 3: Forage + Ask - Beta -->
+      <Card>
+        <div class="card-content">
+          <h2 class="card-title">Forage + Ask - Beta</h2>
+          <p class="card-description">{t.pricing.betaLicenseDescription}</p>
+          <div class="price-container">
+            <div class="price-flex">
+              <span class="original-price">84€</span>
+              <span class="current-price">42€</span>
+              <span class="price-unit">{t.pricing.perUserPerMonth}</span>
+            </div>
+          </div>
+          <div class="bundle-content">
+            <p class="bundle-title">{t.pricing.everythingInAskAndForage}</p>
+            <ul class="features-list">
+              <li>{t.pricing.bundle.feature1}</li>
+              <li>{t.pricing.bundle.feature2}</li>
+              <li>{t.pricing.bundle.feature3}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href={LOGIN_URL}
+            class="cta-link"
+          >
+            <Btn size="max">
+              {t.pricing.subscribeNow}
+              <Icon name="fa7-solid:arrow-right" />
+            </Btn>
+          </a>
+        </div>
+      </Card>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2 class="faq-title">{t.pricing.faqTitle}</h2>
+      <Accordion>
+        <AccordionDropdown>
+          <Fragment slot="header">{t.pricing.faq.question1}</Fragment>
+          <Fragment slot="content">{t.pricing.faq.answer1}</Fragment>
+        </AccordionDropdown>
+        <AccordionDropdown>
+          <Fragment slot="header">{t.pricing.faq.question2}</Fragment>
+          <Fragment slot="content">{t.pricing.faq.answer2}</Fragment>
+        </AccordionDropdown>
+        <AccordionDropdown>
+          <Fragment slot="header">{t.pricing.faq.question3}</Fragment>
+          <Fragment slot="content">{t.pricing.faq.answer3}</Fragment>
+        </AccordionDropdown>
+      </Accordion>
+    </div>
+
+    <!-- Help Section -->
+    <div class="help-section">
+      <p class="help-text">{t.pricing.notSureWhichToChoose}</p>
+      <a href={translatePath('/support')}>
+        <Btn variant="outline">
+          {t.pricing.talkToUs}
+          <Icon name="fa7-solid:arrow-right" />
+        </Btn>
+      </a>
+    </div>
+  </div>
+</LayoutDefault>
+
+<style>
+  @reference "tailwindcss";
+
+  .pricing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100%;
+    @apply gap-6 p-4 md:p-8;
+  }
+
+  .beta-banner {
+    @apply w-full max-w-4xl text-center;
+  }
+
+  .beta-banner-title {
+    @apply text-lg font-medium;
+  }
+
+  .beta-banner-description {
+    @apply text-sm text-stone-500 mt-1;
+  }
+
+  .pricing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    @apply gap-6 w-full max-w-6xl;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 35ch;
+    min-height: 450px;
+    @apply gap-4 p-4;
+  }
+
+  .card-title {
+    @apply text-xl font-bold;
+  }
+
+  .card-description {
+    @apply text-sm text-stone-600;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @apply gap-2;
+  }
+
+  .price-flex {
+    display: flex;
+    align-items: baseline;
+    @apply gap-2 justify-center;
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    @apply text-3xl text-stone-600;
+  }
+
+  .current-price {
+    @apply text-4xl font-bold;
+  }
+
+  .price-unit {
+    @apply text-xs text-gray-500;
+  }
+
+  .features-list {
+    @apply list-none space-y-2;
+  }
+
+  .features-list li {
+    @apply flex items-start gap-2;
+  }
+
+  .features-list li::before {
+    content: '✓';
+    @apply text-green-600 font-bold;
+  }
+
+  .bundle-content {
+    @apply mt-2;
+  }
+
+  .bundle-title {
+    @apply text-sm font-medium mb-2;
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: column;
+    @apply gap-1 p-4 pt-0;
+  }
+
+  .cta-link {
+    width: 100%;
+    text-decoration: none;
+  }
+
+  .footer-note {
+    @apply text-xs text-gray-500 text-center;
+  }
+
+  .currency-note {
+    @apply text-sm text-gray-600 text-center max-w-2xl;
+  }
+
+  .help-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @apply gap-4;
+  }
+
+  .help-text {
+    @apply text-lg font-medium;
+  }
+
+  .faq-section {
+    @apply w-full max-w-3xl;
+  }
+
+  .faq-title {
+    @apply text-2xl font-bold mb-6 text-center;
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-cards {
+      flex-wrap: nowrap;
+    }
+
+    .pricing-card {
+      flex: 1 1 0;
+      max-width: none;
+      width: 0;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .pricing-cards {
+      @apply flex-col items-center;
+    }
+
+    .pricing-card {
+      @apply max-w-full;
+      min-height: auto;
+    }
+
+    .pricing-page {
+      @apply p-4;
+    }
+  }
+</style>

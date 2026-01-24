@@ -7,7 +7,7 @@ import {
   useTranslations,
 } from '@i18n/utilities';
 import Btn from '@components/ui/Btn.astro';
-import { BOOKING_URL, LOGIN_URL } from '../../consts';
+import { LOGIN_URL } from '../../consts';
 import SolutionsDropdown from './SolutionsDropdown.astro';
 // import ProductsDropdown from './ProductsDropdown.astro';
 import { Icon } from 'astro-icon/components';
@@ -87,11 +87,12 @@ const solutions = allPages.sort((a: LandingPage, b: LandingPage) => {
 </div>
 
 <a href={translatePath('/support')}>{t.navbar.support}</a>
-<a class="mobile" rel="noopener noreferrer" href={LOGIN_URL}>
-  <Btn variant="secondary" size="max">{t.navbar.login}</Btn>
+<a href={translatePath('/pricing')}>{t.navbar.pricing}</a>
+<a class="mobile" href={LOGIN_URL}>
+  <Btn variant="secondary" size="max">{t.connect}</Btn>
 </a>
-<a class="mobile" rel="noopener noreferrer" target="_blank" href={BOOKING_URL}>
-  <Btn size="max">{t.cta}</Btn>
+<a class="mobile" href={LOGIN_URL}>
+  <Btn size="max">{t.tryForFree}</Btn>
 </a>
 
 <style>
