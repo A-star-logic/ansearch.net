@@ -8,7 +8,7 @@ import {
   useTranslations,
 } from '@i18n/utilities';
 import Btn from '@components/ui/Btn.astro';
-import { BOOKING_URL, LOGIN_URL } from '../../consts';
+import { LOGIN_URL } from '../../consts';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -27,20 +27,11 @@ const translatePath = useTranslatedPath(lang);
 
     <div class="nav-group">
       <NavLang />
-      <a
-        class="desktop"
-        rel="noopener noreferrer"
-        href={LOGIN_URL}
-      >
-        <Btn variant="ghost">{t.navbar.login}</Btn>
+      <a class="desktop" href={LOGIN_URL}>
+        <Btn variant="ghost">{t.connect}</Btn>
       </a>
-      <a
-        class="desktop"
-        rel="noopener noreferrer"
-        target="_blank"
-        href={BOOKING_URL}
-      >
-        <Btn>{t.cta}</Btn>
+      <a class="desktop" href={LOGIN_URL}>
+        <Btn>{t.tryForFree}</Btn>
       </a>
       <div id="menu" class="mobile">
         <div class="bar"></div>

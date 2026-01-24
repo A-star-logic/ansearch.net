@@ -5,10 +5,10 @@ import ContentVertical from '@components/position/ContentVertical.astro';
 import Card from '@components/ui/Card.astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
+import { BOOKING_URL } from '../../consts';
 
 import imageMael from '../../images/team/mael.webp';
 import imageOlivia from '../../images/team/olivia.webp';
-import imageRohith from '../../images/team/rohith.webp';
 ---
 
 <LayoutDefault>
@@ -17,54 +17,65 @@ import imageRohith from '../../images/team/rohith.webp';
     <p>
       La meilleure façon de nous joindre est par email à
       <a href="mailto:contact@ansearch.ai"> contact@ansearch.ai </a>.
-      <br /> Nous sommes trois personnes, nous répondrons au plus vite.
+      <br /> Nous sommes une petite équipe, nous répondrons au plus vite.
       <br />
       <br />
       Si vous préférez nous parler en personne, vous pouvez réserver un appel :
     </p>
     <div class="cards">
-      <Card>
-        <Image src={imageMael} alt="Mael" />
-        <h2>Mael</h2>
-        <h3>CEO</h3>
-        <em>Peut vous aider avec :</em>
-        <ul>
-          <li>Le produit</li>
-          <li>Prise en main</li>
-          <li>L'IA</li>
-          <li>La sécurité</li>
-        </ul>
-        <Btn variant="secondary">
-          Réserver un appel
-          <Icon name="fa7-solid:arrow-right" />
-        </Btn>
+      <Card class="support-card">
+        <div class="card-content">
+          <Image src={imageMael} alt="Mael" />
+          <h2>Mael</h2>
+          <h3>CEO</h3>
+          <em>Peut vous aider avec :</em>
+          <ul>
+            <li>Produit & prise en main</li>
+            <li>Feedback sur le produit & demandes de fonctionnalités</li>
+            <li>L'IA</li>
+            <li>Sécurité & technologie</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://cal.com/mael-abgrall/30min"
+            class="cta-link"
+          >
+            <Btn variant="secondary">
+              Réserver un appel
+              <Icon name="fa7-solid:arrow-right" />
+            </Btn>
+          </a>
+        </div>
       </Card>
 
-      <Card>
-        <Image src={imageOlivia} alt="Olivia" />
-        <h2>Olivia</h2>
-        <h3>CSMO</h3>
-        <em>Peut vous aider avec :</em>
-        <ul>
-          <li>Prise en main</li>
-          <li>Business & partenariat</li>
-          <li>Questions générales</li>
-          <li>Tout le reste</li>
-        </ul>
-        <Btn>
-          Réserver un appel
-          <Icon name="fa7-solid:arrow-right" />
-        </Btn>
-      </Card>
-
-      <Card>
-        <Image src={imageRohith} alt="Rohith" />
-        <h2>Rohith</h2>
-        <h3>CTO</h3>
-        <em
-          >Vous ne pouvez pas me joindre, mais maintenant vous savez qui est le
-          troisième co-fondateur :)</em
-        >
+      <Card class="support-card">
+        <div class="card-content">
+          <Image src={imageOlivia} alt="Olivia" />
+          <h2>Olivia</h2>
+          <h3>CSMO</h3>
+          <em>Peut vous aider avec :</em>
+          <ul>
+            <li>Questions générales</li>
+            <li>Business & partenariat</li>
+            <li>Tout le reste</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href={BOOKING_URL}
+            class="cta-link"
+          >
+            <Btn>
+              Réserver un appel
+              <Icon name="fa7-solid:arrow-right" />
+            </Btn>
+          </a>
+        </div>
       </Card>
     </div>
   </ContentVertical>
@@ -80,8 +91,32 @@ import imageRohith from '../../images/team/rohith.webp';
     }
 
     .cards {
-      display: grid;
-      @apply gap-8 grid-cols-3;
+      display: flex;
+      @apply gap-8;
+    }
+
+    .support-card {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      width: 0;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      width: 30ch;
+      @apply gap-2;
+    }
+
+    .card-footer {
+      @apply mt-auto pt-4;
+    }
+
+    .cta-link {
+      text-decoration: none;
+      display: block;
     }
 
     em,
@@ -98,13 +133,19 @@ import imageRohith from '../../images/team/rohith.webp';
     ul {
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
       width: 100%;
+      text-align: left;
       @apply gap-1 p-2 list-disc pl-8;
     }
 
     img {
-      @apply rounded-full h-24 w-auto;
+      @apply rounded-full;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      flex-shrink: 0;
+      align-self: center;
     }
   </style>
 </LayoutDefault>

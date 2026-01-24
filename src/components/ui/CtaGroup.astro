@@ -1,0 +1,50 @@
+---
+import Btn from '@components/ui/Btn.astro';
+import { Icon } from 'astro-icon/components';
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from '@i18n/utilities';
+import { LOGIN_URL } from '../../consts';
+
+interface Props {
+  /** Variant for the Contact us button. Defaults to 'outline' */
+  contactVariant?: 'ghost' | 'outline' | 'on-color';
+  /** Variant for the Try for free button. Defaults to 'primary' */
+  tryForFreeVariant?: 'primary' | 'on-color';
+}
+
+const { contactVariant = 'outline', tryForFreeVariant = 'primary' } =
+  Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<div class="cta-group">
+  <a href={translatePath('/support')}>
+    <Btn variant={contactVariant}>
+      {t.contactUs}
+      <Icon name="fa7-solid:arrow-right" />
+    </Btn>
+  </a>
+  <a href={LOGIN_URL}>
+    <Btn variant={tryForFreeVariant}>
+      {t.tryForFree}
+      <Icon name="fa7-solid:arrow-right" />
+    </Btn>
+  </a>
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  .cta-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>
