@@ -15,13 +15,26 @@ const getTranslation = (key: string, lang: string) => {
     en: {
       articlestitle: 'Articles archive',
       noresults: 'Sorry, no articles match your criteria.',
+      postedon: 'Posted on',
     },
     fr: {
       articlestitle: 'Liste des articles',
       noresults: 'Désolé, aucun article ne correspond à vos critères.',
+      postedon: 'Publié le',
     },
   };
   return translations[lang]?.[key] ?? key;
+};
+
+const formatDate = (input: string, lang: string) => {
+  const date = new Date(input);
+  const locale = lang === 'fr' ? 'fr-FR' : 'en-US';
+
+  return date.toLocaleDateString(locale, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 };
 
 const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).filter(
@@ -73,7 +86,10 @@ const filteredPosts = posts.filter((post) => {
             filteredPosts.map((post) => (
               <li class="results-item">
                 <a href={`blog/${post.slug}`}>
-                  <div class="results-item-date">{post.data.date}</div>
+                  <div class="results-item-date">
+                    {getTranslation('postedon', lang)}{' '}
+                    {formatDate(post.data.date, lang)}
+                  </div>
                   <div class="results-item-title">
                     {post.data.title}
                     <span class="results-item-tags">
